@@ -1,0 +1,679 @@
+:root {
+  --bg-main: #0f172a;
+  --bg-sidebar: #1e293b;
+  --bg-card: #334155;
+  --bg-hover: #475569;
+  --border-color: #334155;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  
+  --accent-primary: #38bdf8;
+  --accent-hover: #0284c7;
+  --accent-success: #10b981;
+  --accent-warning: #f59e0b;
+  --accent-danger: #ef4444;
+  
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  --font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Header */
+.app-header {
+  height: 64px;
+  background: var(--bg-sidebar);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 10;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  background: linear-gradient(135deg, var(--accent-primary), #0284c7);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  letter-spacing: -0.5px;
+}
+
+.brand-title h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.floor-tabs {
+  display: flex;
+  background: var(--bg-main);
+  padding: 4px;
+  border-radius: 8px;
+  gap: 4px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+.tab-btn.active {
+  background: var(--accent-primary);
+  color: #0f172a;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-success), #059669);
+  color: #fff;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-primary:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Save Status Badge */
+.save-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  color: var(--accent-success);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-success);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-success);
+
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* Main Layout */
+.main-content {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+}
+
+/* Sidebar */
+.app-sidebar {
+  width: 360px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  overflow-y: auto;
+  z-index: 5;
+}
+
+.sidebar-section {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.sidebar-section.highlight-box {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: var(--accent-primary);
+}
+
+.section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.action-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.action-btn {
+  background: var(--accent-primary);
+  color: #0f172a;
+  border: none;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.15s ease, transform 0.1s ease;
+  text-align: center;
+}
+
+.action-btn:hover {
+  background: var(--accent-hover);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.action-btn.success {
+  background: linear-gradient(135deg, var(--accent-success), #059669);
+  color: #fff;
+}
+
+.action-btn.success:hover {
+  background: #047857;
+}
+
+.action-btn.active {
+  box-shadow: 0 0 0 3px #ffffff, 0 0 12px var(--accent-success);
+}
+
+.action-btn.danger {
+  background: var(--bg-card);
+  color: var(--accent-danger);
+  border: 1px solid var(--accent-danger);
+}
+
+.action-btn.danger:hover {
+  background: var(--accent-danger);
+  color: #fff;
+}
+
+.help-tip {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  background: var(--bg-sidebar);
+  padding: 8px;
+  border-radius: 6px;
+  border-left: 3px solid var(--accent-primary);
+}
+
+/* Add Mode Banner */
+.mode-banner {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+  z-index: 20;
+  transition: all 0.2s ease;
+}
+
+.mode-banner.hidden {
+  display: none;
+}
+
+/* Search Box */
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  gap: 8px;
+}
+
+.search-icon {
+  font-size: 0.9rem;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+#section-search {
+  position: relative;
+  z-index: 50;
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: var(--bg-sidebar);
+  border: 1px solid var(--accent-primary);
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  max-height: 55vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.search-results::-webkit-scrollbar {
+  display: none;
+}
+
+.search-results:empty {
+  display: none !important;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.search-item {
+  padding: 8px;
+  background: var(--bg-sidebar);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  transition: background 0.15s ease;
+}
+
+.search-item:hover {
+  background: var(--bg-card);
+  color: var(--accent-primary);
+}
+
+/* Layer Control List */
+.layer-control-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.layer-toggle-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.layer-toggle-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-primary);
+  cursor: pointer;
+}
+
+/* Category Filter List */
+.category-filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding: 6px 8px;
+  background: var(--bg-sidebar);
+  border-radius: 6px;
+}
+
+.category-label-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-badge {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* Room Editor Card */
+.room-editor-card {
+  font-size: 0.85rem;
+}
+
+.empty-state {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 12px;
+  line-height: 1.5;
+}
+
+.editor-field {
+  margin-bottom: 12px;
+}
+
+.editor-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.editor-input {
+  width: 100%;
+  padding: 8px;
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+select.editor-input {
+  cursor: pointer;
+}
+
+.editor-checkbox-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Viewport & SVG Area */
+.app-viewport {
+  flex: 1;
+  position: relative;
+  background: #090d16;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.app-viewport:active {
+  cursor: grabbing;
+}
+
+.app-viewport.add-mode {
+  cursor: crosshair !important;
+}
+
+.floating-toolbar {
+  position: absolute;
+  bottom: 24px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  z-index: 10;
+}
+
+/* Googleマップ風の丸いフローティングボタン（現在地・全体表示リセット共通） */
+.map-fab {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #3c4043;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.map-fab:hover {
+  background: #f1f5f9;
+}
+
+.map-fab:active {
+  transform: scale(0.94);
+}
+
+.map-fab svg {
+  display: block;
+}
+
+/* 現在地ボタン：追跡中はGoogleマップ同様アイコンだけを青く強調する */
+.map-fab-locate {
+  color: #3c4043;
+}
+
+.map-fab-locate.active {
+  color: #0ea5e9;
+}
+
+/* 全体表示リセットは現在地ボタンより一段小さくして、主役の現在地／ズームより
+   控えめな優先度に見せる */
+.map-fab-reset {
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+}
+
+/* ズーム操作（＋／－）：1本の縦長ピルの中に上下に並べる、Googleマップと同じ形式 */
+.zoom-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+}
+
+.zoom-pill-btn {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  color: #3c4043;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoom-pill-btn:hover {
+  background: #f1f5f9;
+}
+
+.zoom-pill-btn:active {
+  background: #e2e8f0;
+}
+
+.zoom-pill-divider {
+  height: 1px;
+  margin: 0 10px;
+  background: #e2e8f0;
+}
+
+.zoom-indicator {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: rgba(30, 41, 59, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.canvas-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  #svg-canvas {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  #svg-campus {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  body.campus-mode #canvas-wrapper {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#canvas-3d {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* SVG Rendering Elements */
+svg polygon.room-poly {
+  transition: fill 0.15s ease, stroke-width 0.15s ease;
+  cursor: pointer;
+}
+
+svg polygon.room-poly:hover {
+  fill-opacity: 0.85 !important;
+  stroke: #ffffff !important;
+  stroke-width: 800px !important;
+}
+
+svg polygon.room-poly.selected {
+  stroke: #38bdf8 !important;
+  stroke-width: 600px !important;
+}
+
+svg text.room-label-num {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  pointer-events: none;
+  user-select: none;
+}
+
+svg text.room-label-name {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 600;
+  pointer-events: none;
+  user-select: none;
+}
