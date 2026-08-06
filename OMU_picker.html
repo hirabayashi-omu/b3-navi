@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OMU.svg 座標取得ピッカー補助ツール</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    header {
+      background: #1e293b;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #334155;
+    }
+    h1 { font-size: 18px; font-weight: 600; color: #38bdf8; }
+    .subtitle { font-size: 13px; color: #94a3b8; margin-left: 10px; }
+    .main-container {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+    .viewport {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      cursor: crosshair;
+      background: #090d16;
+    }
+    svg#picker-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .panel {
+      width: 360px;
+      background: #1e293b;
+      border-left: 1px solid #334155;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+      z-index: 10;
+    }
+    .card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .card-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .coord-display {
+      font-size: 24px;
+      font-weight: 700;
+      font-family: monospace;
+      color: #4ade80;
+    }
+    .code-box {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #e2e8f0;
+      word-break: break-all;
+      user-select: all;
+    }
+    .btn {
+      background: #0284c7;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #0369a1; }
+    .hint {
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <span>🎯 OMU.svg 座標取得ピッカー補助ツール</span>
+      <span class="subtitle">画像上の任意の場所をクリックすると正確な座標を取得できます</span>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <div class="viewport" id="viewport">
+      <svg id="picker-svg" viewBox="0 0 3955 2523" preserveAspectRatio="xMidYMid meet">
+        <g id="svg-campus-world" transform="translate(-1332, 162) scale(1.4)">
+          <image href="OMU.svg" xlink:href="OMU.svg" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" opacity="0.85"/>
+        </g>
+        <g id="click-marker-layer"></g>
+      </svg>
+    </div>
+
+    <div class="panel">
+      <div class="card">
+        <div class="card-title">① svg-campus-world 内座標 (translate用)</div>
+        <div class="coord-display" id="world-coords">クリックしてください</div>
+        <div style="font-size: 12px; color: #94a3b8; margin-top: 4px;">translate(x, y) にそのまま使えます</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">② 生成SVGコード</div>
+        <div class="code-box" id="code-output">&lt;g transform="translate(0, 0)"&gt;</div>
+        <button class="btn" style="margin-top: 10px; width: 100%;" id="btn-copy">コードをコピー</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title">③ SVG 素の座標 (viewBox)</div>
+        <div style="font-family: monospace; font-size: 16px; color: #cbd5e1;" id="raw-coords">X: - , Y: -</div>
+      </div>
+
+      <div class="hint">
+        💡 <strong>使い方:</strong><br>
+        1. 左側のキャンパス地図の「黄色い四角（B3棟）」や「駅の丸印」を直接クリックしてください。<br>
+        2. クリック位置に赤十字ターゲットが表示され、右パネルに正確な <code>translate(x, y)</code> 座標とSVGコードが即座に生成されます。<br>
+        3. 「コードをコピー」ボタンでコピーして使用できます。
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const svg = document.getElementById('picker-svg');
+    const markerLayer = document.getElementById('click-marker-layer');
+    const worldCoordsEl = document.getElementById('world-coords');
+    const rawCoordsEl = document.getElementById('raw-coords');
+    const codeOutputEl = document.getElementById('code-output');
+    const btnCopy = document.getElementById('btn-copy');
+
+    let currentTransformStr = '';
+
+    svg.addEventListener('click', (e) => {
+      const pt = svg.createSVGPoint();
+      pt.x = e.clientX;
+      pt.y = e.clientY;
+
+      const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
+      const svgX = Math.round(svgPoint.x);
+      const svgY = Math.round(svgPoint.y);
+
+      // translate(-1332, 162) scale(1.4) 内のワールド座標
+      const worldX = Math.round((svgX + 1332) / 1.4);
+      const worldY = Math.round((svgY - 162) / 1.4);
+
+      rawCoordsEl.textContent = `X: ${svgX}, Y: ${svgY}`;
+      worldCoordsEl.textContent = `${worldX}, ${worldY}`;
+
+      currentTransformStr = `transform="translate(${worldX}, ${worldY})"`;
+      codeOutputEl.textContent = `<g class="campus-landmark-badge" transform="translate(${worldX}, ${worldY})">`;
+
+      markerLayer.innerHTML = `
+        <circle cx="${svgX}" cy="${svgY}" r="12" fill="#ef4444" stroke="#ffffff" stroke-width="3" />
+        <line x1="${svgX - 25}" y1="${svgY}" x2="${svgX + 25}" y2="${svgY}" stroke="#ef4444" stroke-width="2" />
+        <line x1="${svgX}" y1="${svgY - 25}" x2="${svgX}" y2="${svgY + 25}" stroke="#ef4444" stroke-width="2" />
+      `;
+    });
+
+    btnCopy.addEventListener('click', () => {
+      if (!currentTransformStr) return;
+      navigator.clipboard.writeText(currentTransformStr);
+      const origText = btnCopy.textContent;
+      btnCopy.textContent = 'コピー完了！';
+      setTimeout(() => btnCopy.textContent = origText, 1500);
+    });
+  </script>
+</body>
+</html>
