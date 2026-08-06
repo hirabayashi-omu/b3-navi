@@ -2213,31 +2213,28 @@ class FloorplanApp {
     this.renderCampusDistancePanel();
   }
 
-/**
- * ユーザーがピッカーツールで実測・確定した3点の画像座標 (B3: 1794,1552 / なかもず: 1834,212 / 白鷺: 2708,913) と
- * 提供された実測GPS緯度経度データ間を誤差0.000%で100%完全に合致・整合させる2Dアフィン変換関数。
- */
-function convertGpsToCampusWorld(lat, lng) {
-  const lat0 = 34.54539577338726, lng0 = 135.50487530677495;
-  const x0 = 1794, y0 = 1552;
+  /**
+   * ユーザーがピッカーツールで実測・確定した3点の画像座標 (B3: 1794,1552 / なかもず: 1834,212 / 白鷺: 2708,913) と
+   * 提供された実測GPS緯度経度データ間を誤差0.000%で100%完全に合致・整合させる2Dアフィン変換メソッド。
+   */
+  convertGpsToCampusWorld(lat, lng) {
+    const lat0 = 34.54539577338726, lng0 = 135.50487530677495;
+    const x0 = 1794, y0 = 1552;
 
-  const dLng = (lng - lng0) * 100000;
-  const dLat = (lat - lat0) * 100000;
+    const dLng = (lng - lng0) * 100000;
+    const dLat = (lat - lat0) * 100000;
 
-  // 連立一次方程式から厳密計算されたアフィン行列パラメータ
-  const A = 106.602;
-  const B = -4.568;
-  const C = -74.541;
-  const D = -132.148;
+    // 連立一次方程式から厳密計算されたアフィン行列パラメータ
+    const A = 106.602;
+    const B = -4.568;
+    const C = -74.541;
+    const D = -132.148;
 
-  const x = Math.round(x0 + A * dLng + B * dLat);
-  const y = Math.round(y0 + C * dLng + D * dLat);
+    const x = Math.round(x0 + A * dLng + B * dLat);
+    const y = Math.round(y0 + C * dLng + D * dLat);
 
-  return { x, y };
-}
-
-class FloorplanApp {
-  // ... (既存クラスメソッド)
+    return { x, y };
+  }
 
   handleGpsUpdate(fix) {
     const campusCenter = getLatLngCenter(GPS_CAMPUS_REFERENCE_POINTS);
@@ -2252,7 +2249,7 @@ class FloorplanApp {
 
     if (this.isCampusMode) {
       // キャンパス付近地図モード時：実測GPSデータから画像アライメント位置へ誤差0.000%で完全整合描画
-      const campusPt = convertGpsToCampusWorld(fix.lat, fix.lng);
+      const campusPt = this.convertGpsToCampusWorld(fix.lat, fix.lng);
       this.renderCampusGpsMarker(campusPt.x, campusPt.y, fix.accuracy);
     } else {
       const mm = this.gpsCalib.toMm(fix.lat, fix.lng);
