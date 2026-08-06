@@ -2214,24 +2214,24 @@ class FloorplanApp {
   }
 
   /**
-   * scale(1.4)スケール変形を含むキャンパスSVGワールド座標系において、
-   * セブンイレブン直下オレンジ丸印 (2287, 434) へ誤差0pxで100%完全一致させる真の2Dアフィン変換メソッド。
+   * ユーザーから提供された3点（B3棟, なかもず駅, 白鷺駅）の実測GPS緯度経度と
+   * 画像SVG座標対から、3x3逆行列計算により一意・厳密に導出された純粋な数学的2Dアフィン変換アルゴリズム。
+   *
+   *  [ X ]   [ a11  a12  a13 ] [ lng ]
+   *  [ Y ] = [ a21  a22  a23 ] [ lat ]
+   *  [ 1 ]   [  0    0    1  ] [  1  ]
    */
   convertGpsToCampusWorld(lat, lng) {
-    const lat0 = 34.54539577338726, lng0 = 135.50487530677495;
-    const x0 = 2080, y0 = 1400;
+    const a11 = 106867.85230699636;
+    const a12 = -464.9017662073329;
+    const a13 = -14463260.78561167;
 
-    const dLng = (lng - lng0) * 100000;
-    const dLat = (lat - lat0) * 100000;
+    const a21 = -4791.914342442105;
+    const a22 = -131895.3330363497;
+    const a23 = 5207256.235871781;
 
-    // scale(1.4)補正済み厳密アフィン行列
-    const A = 0.3973;
-    const B = 0.3089;
-    const C = -2.8369;
-    const D = -1.0561;
-
-    const x = Math.round(x0 + A * dLng + B * dLat);
-    const y = Math.round(y0 + C * dLng + D * dLat);
+    const x = Math.round(a11 * lng + a12 * lat + a13);
+    const y = Math.round(a21 * lng + a22 * lat + a23);
 
     return { x, y };
   }
