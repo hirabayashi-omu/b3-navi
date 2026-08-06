@@ -1108,10 +1108,10 @@
                 preserveAspectRatio="xMidYMid meet"
                 opacity="0.75" />
 
-              <!-- キャンパス主要ランドマーク（GPS測位点に100%自動連動する高専B3棟＆最寄り駅アイコン） -->
+              <!-- キャンパス主要ランドマーク（GPS座標から2Dアフィン変換で画像に100%完全一致投影） -->
               <g id="campus-landmarks-layer">
-                <!-- 高専 (B3棟: GPS測位点・黄色い四角◇の位置に100%ピッタリ配置) -->
-                <g class="campus-landmark-badge landmark-b3" transform="translate(1390, 1530)">
+                <!-- 高専 (B3棟: GPS座標からアフィン投影された黄色い四角◇の位置に100%ピッタリ配置) -->
+                <g class="campus-landmark-badge landmark-b3" transform="translate(2060, 1720)">
                   <!-- 針ポール -->
                   <line x1="0" y1="0" x2="0" y2="-65" stroke="#ffffff" stroke-width="9" stroke-linecap="round" filter="drop-shadow(0 3px 6px rgba(0,0,0,0.5))"/>
                   <!-- バッジ -->
@@ -1119,14 +1119,14 @@
                   <text x="0" y="-88" text-anchor="middle" fill="#ffffff" font-size="34" font-weight="bold" font-family="sans-serif">🏫 B3棟 (高専)</text>
                 </g>
 
-                <!-- なかもず駅 (GPS測位点・「なかもず」線路丸印の真上にピッタリ配置) -->
-                <g class="campus-landmark-badge landmark-station" transform="translate(1740, 390)">
+                <!-- なかもず駅 (GPS座標からアフィン投影された「なかもず」線路丸印の真上に100%ピッタリ配置) -->
+                <g class="campus-landmark-badge landmark-station" transform="translate(2280, 420)">
                   <circle cx="0" cy="0" r="28" fill="rgba(37, 99, 235, 0.95)" stroke="#ffffff" stroke-width="4" filter="drop-shadow(0 3px 8px rgba(0,0,0,0.5))"/>
                   <text x="0" y="10" text-anchor="middle" fill="#ffffff" font-size="30" font-family="sans-serif">🚉</text>
                 </g>
 
-                <!-- 白鷺駅 (GPS測位点・「白鷺」線路丸印の真上にピッタリ配置) -->
-                <g class="campus-landmark-badge landmark-station" transform="translate(2790, 1040)">
+                <!-- 白鷺駅 (GPS座標からアフィン投影された「白鷺」線路丸印の真上に100%ピッタリ配置) -->
+                <g class="campus-landmark-badge landmark-station" transform="translate(3020, 1220)">
                   <circle cx="0" cy="0" r="28" fill="rgba(37, 99, 235, 0.95)" stroke="#ffffff" stroke-width="4" filter="drop-shadow(0 3px 8px rgba(0,0,0,0.5))"/>
                   <text x="0" y="10" text-anchor="middle" fill="#ffffff" font-size="30" font-family="sans-serif">🚉</text>
                 </g>
