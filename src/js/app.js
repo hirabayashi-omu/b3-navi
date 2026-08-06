@@ -531,20 +531,40 @@ class FloorplanApp {
       this.landmarkB3 = document.getElementById('landmark-b3') || document.querySelector('.landmark-b3');
     }
     if (this.landmarkB3) {
-      let startX = 0;
-      let startY = 0;
+      let startX = null;
+      let startY = null;
 
-      this.landmarkB3.addEventListener('pointerdown', (e) => {
-        startX = e.clientX;
-        startY = e.clientY;
-      });
+      const recordStart = (e) => {
+        const point = e.touches ? e.touches[0] : e;
+        if (point) {
+          startX = point.clientX;
+          startY = point.clientY;
+        }
+      };
+
+      this.landmarkB3.addEventListener('pointerdown', recordStart);
+      this.landmarkB3.addEventListener('mousedown', recordStart);
+      this.landmarkB3.addEventListener('touchstart', recordStart, { passive: true });
 
       this.landmarkB3.addEventListener('click', (e) => {
-        if (this.suppressNextRoomClick) return;
-        const dist = Math.hypot(e.clientX - startX, e.clientY - startY);
-        // ドラッグ（パン）操作の移動量が10px未満（クリック/タップ）の場合のみ平面図表示に移行
-        if (dist < 10) {
-          e.stopPropagation();
+        e.stopPropagation();
+        if (this.suppressNextRoomClick) {
+          this.suppressNextRoomClick = false;
+          return;
+        }
+
+        let isClick = true;
+        if (startX !== null && startY !== null && e.clientX !== undefined && e.clientY !== undefined) {
+          const dist = Math.hypot(e.clientX - startX, e.clientY - startY);
+          // ドラッグ（パン）移動量が15px以上の場合のみドラッグとみなす
+          if (dist >= 15) {
+            isClick = false;
+          }
+        }
+        startX = null;
+        startY = null;
+
+        if (isClick) {
           this.setCampusMode(false, true);
         }
       });
