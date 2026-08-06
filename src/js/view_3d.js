@@ -45,10 +45,31 @@ export class Stacked3DRenderer {
     // 検索結果などから指定された「ハイライトすべき部屋」（フロアは切り替えず強調表示するだけ）
     this.highlightTarget = null; // { floor: number, roomId: string } | null
     this.route = null;
+    this.singleFloorNumber = null; // 指定があれば単一フロアのみを立体箱表示する
 
     this.animationFrameId = null;
 
     this.init();
+  }
+
+  /**
+   * 単一フロアのみを大きく立体箱表示するモードを設定/解除する。
+   * 横幅が画面内にすべてすっぽり納まる自動スケール調整を行う。
+   * @param {number|null} floorNum
+   */
+  setSingleFloorMode(floorNum) {
+    this.singleFloorNumber = typeof floorNum === 'number' ? floorNum : null;
+    this.panOffsetX = 0;
+    this.panOffsetY = 0;
+    if (this.singleFloorNumber !== null && this.canvas.width > 0) {
+      const margin = 60;
+      const fitScaleX = (this.canvas.width - margin * 2) / (this.totalWidth * 1.35);
+      const fitScaleY = (this.canvas.height - margin * 2) / (this.totalHeight * 1.1);
+      this.scale = Math.min(fitScaleX, fitScaleY, 0.016);
+    } else {
+      this.scale = 0.008;
+    }
+    this.render();
   }
 
   init() {
@@ -511,7 +532,6 @@ export class Stacked3DRenderer {
   render() {
     // 回転中心（＝建物全体の鉛直方向の中心）が常にキャンバス中央付近にくるよう、
     // 現在の傾き(angleZ)に応じてoffsetを毎フレーム計算し直す。
-    // これにより、回転操作で6Fなど上階が画面外に見切れる問題を防ぐ。
     const base = this.computeBaseOffsets();
     this.offsetX = base.x + this.panOffsetX;
     this.offsetY = base.y + this.panOffsetY;
@@ -522,7 +542,12 @@ export class Stacked3DRenderer {
     // 1階から6階まで下から順に描画 (Zソート)
     const floors = [...this.floorsData].sort((a, b) => a.floor - b.floor);
     floors.forEach(floorData => {
-      const zHeight = (floorData.floor - 1) * this.floorSpacing / this.scale;
+      if (this.singleFloorNumber !== null && floorData.floor !== this.singleFloorNumber) {
+        return;
+      }
+      const zHeight = this.singleFloorNumber !== null
+        ? 0
+        : (floorData.floor - 1) * this.floorSpacing / this.scale;
       this.renderFloorPlate(floorData, zHeight);
     });
   }
@@ -568,78 +593,25 @@ export class Stacked3DRenderer {
       }
     }
 
-    // 各部屋ポリゴン描画（実際の部屋形状 polygon_mm をそのまま使用。矩形とは限らない）
+    // 各部屋を高さを持った立体的な「箱（3Dブロック）」として描き出し（羽田空港マップ風の作図法）
     (floorData.rooms || []).forEach(room => {
       const poly = room.polygon_mm;
       if (!poly || poly.length === 0) return;
 
-      const fallback = this.categoryColors[room.category] || { fill: 'rgba(148, 163, 184, 0.35)', stroke: '#94a3b8' };
+      const fallback = this.categoryColors[room.category] || { fill: 'rgba(148, 163, 184, 0.45)', stroke: '#94a3b8' };
       const fillColor = room.fillColor || fallback.fill;
       const strokeColor = room.strokeColor || fallback.stroke;
 
-      const projected = poly.map(p => this.isoProject(p[0], p[1], zHeight + 500));
+      const isHighlighted = !!(this.highlightTarget &&
+        this.highlightTarget.floor === floorData.floor &&
+        room.room_id === this.highlightTarget.roomId);
 
-      const drawPolyPath = () => {
-        this.ctx.beginPath();
-        projected.forEach((pt, idx) => {
-          if (idx === 0) this.ctx.moveTo(pt.x, pt.y);
-          else this.ctx.lineTo(pt.x, pt.y);
-        });
-        this.ctx.closePath();
-      };
+      const topPts = this.renderExtrudedRoomBox(room, poly, zHeight, fillColor, strokeColor, isHighlighted);
 
-      // 黒枠（主事室・管理職など）はダークな3D背景に埋もれやすいため、
-      // 先に太めの白いハロー線を描いてから通常の枠を重ねる（2D編集画面と同じ配色ルール）
-      if (room.strokeHalo) {
-        drawPolyPath();
-        this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
-        this.ctx.lineWidth = 2.2;
-        this.ctx.stroke();
-      }
-
-      drawPolyPath();
-      this.ctx.fillStyle = fillColor;
-      this.ctx.fill();
-      this.ctx.strokeStyle = strokeColor;
-      this.ctx.lineWidth = 0.8;
-      this.ctx.stroke();
-
-      // 2色（緑／白）の所属は破線を重ねて縞模様の枠線にする（2D編集画面と同じ配色ルール）
-      if (room.strokeColor2) {
-        drawPolyPath();
-        this.ctx.save();
-        this.ctx.setLineDash([3, 3]);
-        this.ctx.strokeStyle = room.strokeColor2;
-        this.ctx.lineWidth = 0.8;
-        this.ctx.stroke();
-        this.ctx.restore();
-      }
-
-      // 検索結果などから指定された部屋であれば、赤枠＋赤い塗りを重ねて強調する
-      // （フロアの建物外形は白でハイライトするため、部屋自体は赤にして見分けやすくする）。
-      // 塗りの不透明度・線幅・グロー量を時間で滑らかに揺らし、点滅しているように見せる
-      // （2D側のCSS点滅アニメーションと視覚的な印象を揃えている）。
-      if (this.highlightTarget &&
-          this.highlightTarget.floor === floorData.floor &&
-          room.room_id === this.highlightTarget.roomId) {
-        const pulse = 0.5 + 0.5 * Math.sin(Date.now() / 260);
-        drawPolyPath();
-        this.ctx.save();
-        this.ctx.fillStyle = `rgba(239, 68, 68, ${(0.28 + 0.35 * pulse).toFixed(3)})`;
-        this.ctx.fill();
-        this.ctx.strokeStyle = '#ef4444';
-        this.ctx.lineWidth = 2 + 1.2 * pulse;
-        this.ctx.shadowColor = 'rgba(239, 68, 68, 0.9)';
-        this.ctx.shadowBlur = 8 + 14 * pulse;
-        this.ctx.stroke();
-        this.ctx.restore();
-      }
-
-      // 3D表示では文字ラベルは出さず、階段・トイレ・EVのアイコンのみを表示する
-      // （app.js側で該当する部屋にだけ room.icon がセットされている）
+      // 階段・トイレ・EVのアイコン、部屋番号ラベルを天面上に描画
       if (room.icon) {
         const centerMm = room.center_point_mm || this.polygonCentroid(poly);
-        const iconPos = this.isoProject(centerMm[0], centerMm[1], zHeight + 900);
+        const iconPos = this.isoProject(centerMm[0], centerMm[1], zHeight + (this.singleFloorNumber !== null ? 1200 : 900));
         this.drawRoomIcon(iconPos, room.icon);
       }
     });
@@ -659,10 +631,101 @@ export class Stacked3DRenderer {
   }
 
   /**
-   * 出入口（正面入口・西入口など）の位置を、丸マーカー＋ラベルバッジで表示する。
-   * @param {{x:number, y:number}} screenPos
-   * @param {string} label
+   * 部屋ポリゴンを高さを持った立体的な「箱（3D Extruded Block）」として描画する。
+   * 羽田空港フロアマップのような立ち上がり壁（側面シェーディング）と上面で構成。
    */
+  renderExtrudedRoomBox(room, poly, zHeight, fillColor, strokeColor, isHighlighted) {
+    const wallHeight = this.singleFloorNumber !== null ? 550 : 420; // 部屋の壁の高さ (mm)
+    const zBase = zHeight + 60;
+    const zTop = zBase + wallHeight;
+
+    const basePts = poly.map(p => this.isoProject(p[0], p[1], zBase));
+    const topPts = poly.map(p => this.isoProject(p[0], p[1], zTop));
+    const n = poly.length;
+
+    // 1. 側面壁 (Side Faces / Walls) の描画（手前・横の壁にリアルな影を付与）
+    for (let i = 0; i < n; i++) {
+      const nextIdx = (i + 1) % n;
+      const b1 = basePts[i];
+      const b2 = basePts[nextIdx];
+      const t2 = topPts[nextIdx];
+      const t1 = topPts[i];
+
+      const dx = b2.x - b1.x;
+      const dy = b2.y - b1.y;
+
+      let shadowFactor = 0.28;
+      if (dy > 0) shadowFactor += 0.16; // 下向きの壁
+      if (dx > 0) shadowFactor += 0.10; // 右向きの壁
+
+      this.ctx.beginPath();
+      this.ctx.moveTo(b1.x, b1.y);
+      this.ctx.lineTo(b2.x, b2.y);
+      this.ctx.lineTo(t2.x, t2.y);
+      this.ctx.lineTo(t1.x, t1.y);
+      this.ctx.closePath();
+
+      this.ctx.fillStyle = fillColor;
+      this.ctx.fill();
+      this.ctx.fillStyle = `rgba(15, 23, 42, ${shadowFactor.toFixed(2)})`;
+      this.ctx.fill();
+
+      this.ctx.strokeStyle = strokeColor;
+      this.ctx.lineWidth = 0.6;
+      this.ctx.stroke();
+    }
+
+    // 2. 上面 (Top Face / Roof) の描画
+    const drawTopPath = () => {
+      this.ctx.beginPath();
+      topPts.forEach((pt, idx) => {
+        if (idx === 0) this.ctx.moveTo(pt.x, pt.y);
+        else this.ctx.lineTo(pt.x, pt.y);
+      });
+      this.ctx.closePath();
+    };
+
+    if (room.strokeHalo) {
+      drawTopPath();
+      this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+      this.ctx.lineWidth = 2.2;
+      this.ctx.stroke();
+    }
+
+    drawTopPath();
+    this.ctx.fillStyle = fillColor;
+    this.ctx.fill();
+    this.ctx.strokeStyle = strokeColor;
+    this.ctx.lineWidth = 0.9;
+    this.ctx.stroke();
+
+    if (room.strokeColor2) {
+      drawTopPath();
+      this.ctx.save();
+      this.ctx.setLineDash([3, 3]);
+      this.ctx.strokeStyle = room.strokeColor2;
+      this.ctx.lineWidth = 0.9;
+      this.ctx.stroke();
+      this.ctx.restore();
+    }
+
+    if (isHighlighted) {
+      const pulse = 0.5 + 0.5 * Math.sin(Date.now() / 260);
+      drawTopPath();
+      this.ctx.save();
+      this.ctx.fillStyle = `rgba(239, 68, 68, ${(0.35 + 0.35 * pulse).toFixed(3)})`;
+      this.ctx.fill();
+      this.ctx.strokeStyle = '#ef4444';
+      this.ctx.lineWidth = 2.5 + 1.2 * pulse;
+      this.ctx.shadowColor = 'rgba(239, 68, 68, 0.9)';
+      this.ctx.shadowBlur = 10 + 14 * pulse;
+      this.ctx.stroke();
+      this.ctx.restore();
+    }
+
+    return topPts;
+  }
+
   drawEntranceMarker(screenPos, label) {
     if (!label) return;
     const ctx = this.ctx;

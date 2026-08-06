@@ -41,13 +41,75 @@
       touch-action: none;
     }
     #svg-canvas,
+    #svg-campus,
     #canvas-3d {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      max-width: 100%;
-      max-height: 100%;
       display: block;
+      margin: auto;
+      overflow: visible !important;
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: opacity, transform;
+    }
+    /* 俯瞰ビュー（部屋が立体的にダイナミックに立ち上がる圧倒的な押し出し感） */
+    body.view-birds-eye #svg-canvas,
+    body.view-birds-eye #svg-campus {
+      transform: rotateX(56deg) rotateZ(-28deg) scale(0.78) translateY(-10px) !important;
+      filter: drop-shadow(-4px 6px 0px rgba(15, 23, 42, 0.9))
+              drop-shadow(-8px 12px 0px rgba(15, 23, 42, 0.6))
+              drop-shadow(-12px 18px 25px rgba(0, 0, 0, 0.8)) !important;
+    }
+    body.view-birds-eye #svg-canvas path,
+    body.view-birds-eye #svg-canvas polygon,
+    body.view-birds-eye #svg-canvas rect {
+      filter: drop-shadow(-2px 3.5px 0px rgba(15, 23, 42, 0.75)) !important;
+    }
+    /* 俯瞰ビュー時：ピンの赤球が潰れず画面上でピッタリ綺麗な「正円・まん丸球体」になる完全補正 */
+    body.view-birds-eye .search-pin-group {
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      transform: rotateZ(28deg) rotateX(-56deg) scale(1.3, 2.3) translateY(-10px) !important;
+    }
+    body.view-birds-eye #gps-dot-layer {
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      transform: rotateZ(28deg) rotateX(-56deg) scale(1.3) !important;
+    }
+    body.view-birds-eye #btn-fab-birds-eye {
+      background: rgba(59, 130, 246, 0.45) !important;
+      border-color: #3b82f6 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 14px rgba(59, 130, 246, 0.5);
+    }
+    #svg-canvas.map-transition-out,
+    #svg-campus.map-transition-out,
+    #canvas-3d.map-transition-out {
+      opacity: 0 !important;
+      transform: scale(0.97) !important;
+      pointer-events: none !important;
+    }
+    #svg-canvas.map-transition-in,
+    #svg-campus.map-transition-in,
+    #canvas-3d.map-transition-in {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+      pointer-events: auto !important;
+    }
+    /* フロア切り替え（階数昇降）用エレベーター型スライド＆フェードアニメーション */
+    #svg-canvas.floor-transition-up {
+      opacity: 0 !important;
+      transform: translateY(28px) scale(0.98) !important;
+    }
+    #svg-canvas.floor-transition-down {
+      opacity: 0 !important;
+      transform: translateY(-28px) scale(0.98) !important;
+    }
+    #svg-canvas.floor-transition-enter {
+      opacity: 1 !important;
+      transform: translateY(0) scale(1) !important;
     }
     #canvas-3d {
       cursor: grab;
@@ -56,8 +118,13 @@
       cursor: grabbing;
     }
     #svg-canvas.hidden,
+    #svg-campus.hidden,
     #canvas-3d.hidden {
-      display: none;
+      display: none !important;
+    }
+    /* キャンパス付近地図モード中は俯瞰ビューボタン（📐）を非表示にする */
+    body.campus-mode #btn-fab-birds-eye {
+      display: none !important;
     }
 
     /* 検索モード／編集モード 切り替えスイッチ */
@@ -828,8 +895,16 @@
        2カラムのままになり、justify-content: space-between による
        右寄せ位置が通常時／キャンパス地図時で完全に一致する
        （＝切り替えボタンの位置がレイアウト上ズレない）。 */
+    #btn-copy-campus-link {
+      display: none;
+    }
+    body.campus-mode #btn-copy-campus-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
     body.campus-mode .app-sidebar,
-    body.campus-mode .header-controls > *:not(#btn-campus-map) {
+    body.campus-mode .header-controls > *:not(#btn-campus-map):not(#btn-copy-campus-link) {
       display: none !important;
     }
     body.campus-mode .main-content {
@@ -851,6 +926,7 @@
 
       <div class="header-controls">
         <button class="btn-secondary" id="btn-campus-map" title="キャンパス付近地図モードとB3平面図表示を切り替えます"><span class="label-full">👉 キャンパス付近地図</span><span class="label-short">👉</span></button>
+        <button class="btn-secondary" id="btn-copy-campus-link" title="キャンパス付近地図を直接開くリンク（?campus=1）をコピーします">🏫</button>
 
         <!-- ?mobile=1 の専用URLで開いた時だけ表示される目印バッジ（PC幅で開いた場合のみ） -->
         <span id="mobile-forced-badge">📱 スマホ表示中</span>
@@ -1001,6 +1077,7 @@
           <span class="zoom-indicator" id="zoom-indicator">100%</span>
 
           <button class="map-fab map-fab-reset" id="btn-zoom-reset" title="全体表示 (Reset)">🎯</button>
+          <button class="map-fab" id="btn-fab-birds-eye" title="真上表示と俯瞰（斜め鳥瞰）ビューを切り替えます">📐</button>
 
           <!-- GPS現在地表示：位置情報の利用許可があれば、平面図上に現在地を青いドットで表示する。
                基準点（東正面入口・西入口）は1F平面図に既に登録済みの座標を自動で使用する。

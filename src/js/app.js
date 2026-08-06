@@ -143,6 +143,9 @@ class FloorplanApp {
     // campusモード：OMU.svgキャンパス地図表示時にtrue。B3フロア通常表示時はfalse。
     this.isCampusMode = false;
 
+    // 俯瞰ビュー（斜め鳥瞰表示）モード時にtrue
+    this.isBirdsEyeMode = false;
+
     this.categoryState = {};
     Object.keys(CATEGORY_COLORS).forEach(cat => {
       this.categoryState[cat] = true;
@@ -167,16 +170,61 @@ class FloorplanApp {
   }
 
   loadPersistedData() {
+    let loadedData = null;
     try {
       const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (saved) {
         console.log("Loaded persisted room edits from localStorage.");
-        return JSON.parse(saved);
+        loadedData = JSON.parse(saved);
       }
     } catch (e) {
       console.warn("Failed to load from localStorage, falling back to default CAD data.", e);
     }
-    return JSON.parse(JSON.stringify(B3_FLOORS_DATA));
+
+    if (!loadedData) {
+      return JSON.parse(JSON.stringify(B3_FLOORS_DATA));
+    }
+
+    // デフォルトマスターデータ（B3_FLOORS_DATA）から教員名(teachers)や最新の部屋情報を照合・マージし、
+    // 古い localStorage キャッシュによって教員名や基本情報が消失しないよう安全に復元・維持する。
+    const defaultData = JSON.parse(JSON.stringify(B3_FLOORS_DATA));
+    const defaultRoomMap = {};
+    (defaultData.floors || []).forEach(f => {
+      (f.rooms || []).forEach(r => {
+        if (r.room_id) {
+          defaultRoomMap[r.room_id] = r;
+        }
+      });
+    });
+
+    (loadedData.floors || []).forEach(f => {
+      (f.rooms || []).forEach(r => {
+        const defRoom = defaultRoomMap[r.room_id];
+        if (defRoom) {
+          // 教員名が空または未定義の場合はデフォルトデータから自動復元
+          if (!r.teachers || r.teachers.length === 0) {
+            if (defRoom.teachers && defRoom.teachers.length > 0) {
+              r.teachers = defRoom.teachers;
+            }
+          }
+          // トイレ等の公式名称・部屋名・部屋番号の最新デフォルト優先同期
+          if (defRoom.room_name && (defRoom.room_name.includes('多目的') || !r.room_name)) {
+            r.room_name = defRoom.room_name;
+            r.display_label = defRoom.display_label || defRoom.room_name;
+          } else {
+            if (!r.room_name && defRoom.room_name) r.room_name = defRoom.room_name;
+            if (!r.display_label && defRoom.display_label) r.display_label = defRoom.display_label;
+          }
+          if (!r.room_number && defRoom.room_number) r.room_number = defRoom.room_number;
+          if (!r.display_number && defRoom.display_number) r.display_number = defRoom.display_number;
+          if ((!r.affiliation || r.affiliation === 'other') && defRoom.affiliation) {
+            r.affiliation = defRoom.affiliation;
+          }
+        }
+      });
+    });
+
+    return loadedData;
   }
 
   savePersistedData() {
@@ -285,6 +333,31 @@ class FloorplanApp {
   }
 
   /**
+   * キャンパス付近地図専用ダイレクトリンク（?campus=1&mobile=1）を生成する。
+   * このリンクを開くと、画面幅に関わらず自動的にキャンパス付近地図モードで開かれる。
+   */
+  buildCampusDirectLink() {
+    const url = new URL(window.location.href);
+    url.hash = '';
+    url.searchParams.set('campus', '1');
+    url.searchParams.set('mobile', '1');
+    url.searchParams.delete('floor');
+    url.searchParams.delete('room');
+    return url.toString();
+  }
+
+  /** キャンパス付近地図専用ダイレクトリンクをクリップボードにコピーする。 */
+  async copyCampusDirectLink(triggerEl) {
+    const link = this.buildCampusDirectLink();
+    try {
+      await navigator.clipboard.writeText(link);
+      this.flashLinkCopyFeedback(triggerEl, '✅');
+    } catch (e) {
+      window.prompt('このリンクをコピーしてください（QRコード化やチャット共有に使えます）:', link);
+    }
+  }
+
+  /**
    * 指定した部屋への直接リンク（?floor=..&room=..&mobile=1）を生成する。
    * このリンクを開くと、該当フロアに切り替わり、部屋に📍が表示された状態になる。
    * メール等での共有・スマホでの閲覧を主目的とするため、常に ?mobile=1 を付与し、
@@ -324,12 +397,18 @@ class FloorplanApp {
   }
 
   /**
-   * URLに ?floor=..&room=.. が含まれている場合（メール等から直接リンクで開いた場合）、
-   * 該当フロアに切り替えて部屋をハイライト＋📍表示する。
+   * URLに ?floor=..&room=.. または ?campus=1 が含まれている場合（メール等から直接リンクで開いた場合）、
+   * 該当フロアやキャンパス付近地図モードに切り替える。
    * floorパラメータが無い/誤っている場合は room_id から全フロアを検索してフォールバックする。
    */
   consumeDirectLinkFromURL() {
     const params = new URLSearchParams(window.location.search);
+    const campusParam = params.get('campus');
+    if (campusParam === '1' || campusParam === 'true') {
+      this.setCampusMode(true);
+      return;
+    }
+
     const roomId = params.get('room');
     if (!roomId) {
       // 部屋指定は無いが、フロア指定だけある場合（スマホ検索モード専用リンクなど）はそのフロアを開く
@@ -397,6 +476,9 @@ class FloorplanApp {
     // 現在地→目的部屋の経路表示レイヤー
     this.layerRoutePath = document.getElementById('layer-route-path');
     this.btnCampusMap = document.getElementById('btn-campus-map');
+    this.btnCopyCampusLink = document.getElementById('btn-copy-campus-link');
+    this.btnToggleBirdsEye = document.getElementById('btn-toggle-birds-eye');
+    this.btnFabBirdsEye = document.getElementById('btn-fab-birds-eye');
     this.svgCampus = document.getElementById('svg-campus');
     this.svgCampusWorld = document.getElementById('svg-campus-world');
     this.campusDistancePanel = document.getElementById('campus-distance-panel');
@@ -440,6 +522,24 @@ class FloorplanApp {
     if (this.btnCampusMap) {
       this.btnCampusMap.addEventListener('click', () => {
         this.toggleCampusMode();
+      });
+    }
+
+    if (this.btnToggleBirdsEye) {
+      this.btnToggleBirdsEye.addEventListener('click', () => {
+        this.toggleBirdsEyeMode();
+      });
+    }
+
+    if (this.btnFabBirdsEye) {
+      this.btnFabBirdsEye.addEventListener('click', () => {
+        this.toggleBirdsEyeMode();
+      });
+    }
+
+    if (this.btnCopyCampusLink) {
+      this.btnCopyCampusLink.addEventListener('click', () => {
+        this.copyCampusDirectLink(this.btnCopyCampusLink);
       });
     }
 
@@ -836,6 +936,9 @@ class FloorplanApp {
   }
 
   switchToFloor(floorNum, roomIdToSelect) {
+    const oldFloor = this.currentFloorNum;
+    const diff = floorNum - oldFloor;
+
     if (this.isCampusMode) {
       this.setCampusMode(false);
     }
@@ -861,19 +964,70 @@ class FloorplanApp {
       // 検索結果から遷移してきた場合のみ📍を落とす対象として記録する
       this.searchPinRoomId = roomIdToSelect;
     }
-    this.renderFloor(floorNum);
 
-    // 検索結果／ダイレクトリンクから特定の部屋を指定して遷移してきた場合は、
-    // その部屋が画面内（できれば中央）に収まるよう平面図の表示位置・ズームを自動調整する。
-    // それ以外（フロアタブのクリック等）の遷移では、現在のパン・ズームは変更しない。
-    if (roomIdToSelect) {
-      const floorObj = this.data.floors.find(f => f.floor === floorNum);
-      const targetRoom = floorObj && floorObj.rooms.find(r => r.room_id === roomIdToSelect);
-      if (targetRoom) {
-        // レイアウト（SVGの実際の表示サイズ）が確定してから座標計算を行うため
-        // 次の描画フレームまで待つ。
-        requestAnimationFrame(() => this.centerOnRoom(targetRoom));
+    if (this.isBirdsEyeMode && this.renderer3D) {
+      this.renderer3D.setSingleFloorMode(floorNum);
+    }
+
+    const animateFloor = diff !== 0 && this.svgCanvas && !this.svgCanvas.classList.contains('hidden');
+
+    if (animateFloor) {
+      if (this._floorTransitionTimer) {
+        clearTimeout(this._floorTransitionTimer);
+        this._floorTransitionTimer = null;
       }
+
+      const directionClass = diff > 0 ? 'floor-transition-up' : 'floor-transition-down';
+      
+      this.svgCanvas.classList.remove('floor-transition-up', 'floor-transition-down', 'floor-transition-enter');
+      this.svgCanvas.classList.add(directionClass);
+
+      this._floorTransitionTimer = setTimeout(() => {
+        this.renderFloor(floorNum);
+
+        if (roomIdToSelect) {
+          const floorObj = this.data.floors.find(f => f.floor === floorNum);
+          const targetRoom = floorObj && floorObj.rooms.find(r => r.room_id === roomIdToSelect);
+          if (targetRoom) {
+            requestAnimationFrame(() => this.centerOnRoom(targetRoom));
+          }
+        }
+
+        this.svgCanvas.classList.remove(directionClass);
+        this.svgCanvas.classList.add('floor-transition-enter');
+
+        setTimeout(() => {
+          if (this.svgCanvas) this.svgCanvas.classList.remove('floor-transition-enter');
+          this._floorTransitionTimer = null;
+        }, 220);
+      }, 110);
+    } else {
+      this.renderFloor(floorNum);
+      if (roomIdToSelect) {
+        const floorObj = this.data.floors.find(f => f.floor === floorNum);
+        const targetRoom = floorObj && floorObj.rooms.find(r => r.room_id === roomIdToSelect);
+        if (targetRoom) {
+          requestAnimationFrame(() => this.centerOnRoom(targetRoom));
+        }
+      }
+    }
+  }
+
+  toggleBirdsEyeMode() {
+    this.setBirdsEyeMode(!this.isBirdsEyeMode);
+  }
+
+  setBirdsEyeMode(enabled) {
+    this.isBirdsEyeMode = enabled;
+    document.body.classList.toggle('view-birds-eye', enabled);
+    if (this.btnFabBirdsEye) {
+      this.btnFabBirdsEye.classList.toggle('active', enabled);
+    }
+    if (enabled && this.is3DMode) {
+      this.exit3DView();
+    }
+    if (enabled && this.isCampusMode) {
+      this.setCampusMode(false, false);
     }
   }
 
@@ -881,12 +1035,15 @@ class FloorplanApp {
     if (this.is3DMode) {
       this.exit3DView();
     }
-    this.setCampusMode(!this.isCampusMode);
+    this.setCampusMode(!this.isCampusMode, true);
   }
 
-  setCampusMode(enabled) {
+  setCampusMode(enabled, animate = true) {
     if (enabled && this.is3DMode) {
       this.exit3DView();
+    }
+    if (enabled && this.isBirdsEyeMode) {
+      this.setBirdsEyeMode(false);
     }
     this.isCampusMode = enabled;
     this.isDragging = false;
@@ -923,22 +1080,41 @@ class FloorplanApp {
       }
     }
     this.updateGpsButtonVisibility();
+
     if (enabled) {
       // キャンパスモード時は、フロアタブを無効化してB3フロア表示を切り替えない。
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      if (this.svgCampus) this.svgCampus.classList.remove('hidden');
-      if (this.svgCanvas) this.svgCanvas.classList.add('hidden');
-      // 表示状態（hidden解除）を先に反映してからでないとコンテナのサイズが
-      // 0のまま計算されてしまうため、可視化した直後にフィット計算を行う。
-      this.resetZoom();
-      // モード切替直後にも距離パネルの中身（GPS未測位時の案内 or 直近の測位結果）を反映する。
-      this.renderCampusDistancePanel();
+    }
+
+    const entering = enabled ? this.svgCampus : (this.is3DMode ? this.canvas3D : this.svgCanvas);
+    const leaving = enabled ? (this.is3DMode ? this.canvas3D : this.svgCanvas) : this.svgCampus;
+
+    if (animate && entering && leaving) {
+      this.animateViewTransition(entering, leaving, () => {
+        if (enabled) {
+          this.resetZoom();
+          this.renderCampusDistancePanel();
+        } else {
+          this.renderFloor(this.currentFloorNum);
+          this.resetZoom();
+        }
+      });
     } else {
-      // B3通常表示に戻すときは現在のフロアを再表示
-      if (this.svgCampus) this.svgCampus.classList.add('hidden');
-      if (this.svgCanvas) this.svgCanvas.classList.remove('hidden');
-      this.renderFloor(this.currentFloorNum);
-      this.resetZoom();
+      if (this.svgCampus) {
+        this.svgCampus.classList.toggle('hidden', !enabled);
+        this.svgCampus.classList.remove('map-transition-in', 'map-transition-out');
+      }
+      if (this.svgCanvas) {
+        this.svgCanvas.classList.toggle('hidden', enabled || this.is3DMode);
+        this.svgCanvas.classList.remove('map-transition-in', 'map-transition-out');
+      }
+      if (enabled) {
+        this.resetZoom();
+        this.renderCampusDistancePanel();
+      } else {
+        this.renderFloor(this.currentFloorNum);
+        this.resetZoom();
+      }
     }
   }
 
@@ -1102,17 +1278,23 @@ class FloorplanApp {
       return;
     }
     if (this.isCampusMode) {
-      // キャンパス付近地図：画面の「縦幅」を基準にフィットさせる
-      // （縦長のスマホ画面でもキャンパス全体の上下が収まり、横方向は
-      //   はみ出す分をドラッグ／ピンチで見る形をデフォルトにする）。
+      // キャンパス付近地図：画面の「縦幅」を基準にピッタリフィット拡大させる
+      const rect = this.svgCampus ? this.svgCampus.getBoundingClientRect() : null;
+      const containerW = (rect && rect.width > 0) ? rect.width : window.innerWidth;
+      const containerH = (rect && rect.height > 0) ? rect.height : window.innerHeight;
+
       const vbW = 3955;
       const vbH = 2523;
+      const baseContainScale = Math.min(containerW / vbW, containerH / vbH);
+      const heightFitScale = containerH / vbH;
+      const fitScale = (baseContainScale > 0) ? (heightFitScale / baseContainScale) : 1.0;
+
       const viewCenterX = vbW / 2;
       const viewCenterY = vbH / 2;
-      const fitScale = this.computeAxisFitScale(this.svgCampus, vbW, vbH, 'height');
-      this.campusScale = fitScale;
-      this.campusPanX = viewCenterX * (1 - fitScale);
-      this.campusPanY = viewCenterY * (1 - fitScale);
+
+      this.campusScale = Math.max(1.0, fitScale);
+      this.campusPanX = viewCenterX * (1 - this.campusScale);
+      this.campusPanY = viewCenterY * (1 - this.campusScale);
       this.updateTransform();
       return;
     }
@@ -1207,6 +1389,46 @@ class FloorplanApp {
     });
   }
 
+  /**
+   * 画面ビュー（B3平面図, キャンパス地図, 3D立体表示）の表示切替をスムーズなアニメーションで行う。
+   */
+  animateViewTransition(entering, leaving, onFinish) {
+    if (!entering || !leaving || entering === leaving) {
+      if (onFinish) onFinish();
+      return;
+    }
+
+    if (this._mapTransitionTimer) {
+      clearTimeout(this._mapTransitionTimer);
+      this._mapTransitionTimer = null;
+    }
+
+    entering.classList.remove('hidden');
+    entering.classList.add('map-transition-out');
+    entering.classList.remove('map-transition-in');
+
+    leaving.classList.remove('hidden');
+    leaving.classList.add('map-transition-in');
+    leaving.classList.remove('map-transition-out');
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        entering.classList.remove('map-transition-out');
+        entering.classList.add('map-transition-in');
+        leaving.classList.remove('map-transition-in');
+        leaving.classList.add('map-transition-out');
+      });
+    });
+
+    this._mapTransitionTimer = setTimeout(() => {
+      leaving.classList.add('hidden');
+      leaving.classList.remove('map-transition-out', 'map-transition-in');
+      entering.classList.remove('map-transition-out', 'map-transition-in');
+      this._mapTransitionTimer = null;
+      if (onFinish) onFinish();
+    }, 360);
+  }
+
   toggle3DView() {
     if (this.is3DMode) {
       this.exit3DView();
@@ -1222,9 +1444,8 @@ class FloorplanApp {
     this.btn3DView.classList.add('active');
     this.viewport.classList.add('mode-3d');
 
-    // 2D編集用のSVGを隠し、立体表示用のCanvasに切り替える
-    this.svgCanvas.classList.add('hidden');
-    this.canvas3D.classList.remove('hidden');
+    const leaving = this.isCampusMode ? this.svgCampus : this.svgCanvas;
+    this.animateViewTransition(this.canvas3D, leaving);
 
     if (!this.renderer3D) {
       this.renderer3D = new Stacked3DRenderer(this.canvas3D, {
@@ -1263,14 +1484,18 @@ class FloorplanApp {
     this.is3DMode = false;
     this.btn3DView.classList.remove('active');
     this.viewport.classList.remove('mode-3d');
-    this.canvas3D.classList.add('hidden');
-    this.svgCanvas.classList.remove('hidden');
+
+    const entering = this.isCampusMode ? this.svgCampus : this.svgCanvas;
+    this.animateViewTransition(entering, this.canvas3D);
+
     // 3D表示を離れる間は非表示のCanvasを裏で再描画し続ける必要が無いため、
     // 点滅アニメーションループを止めておく（次回enter3DView時に必要なら再開する）。
     if (this.renderer3D) {
       this.renderer3D.stopHighlightBlink();
     }
-    this.renderFloor(this.currentFloorNum);
+    if (!this.isCampusMode) {
+      this.renderFloor(this.currentFloorNum);
+    }
     this.resetZoom();
   }
 
@@ -1875,23 +2100,48 @@ class FloorplanApp {
     const [cx, cy] = centerPointMm;
     const svgNS = 'http://www.w3.org/2000/svg';
 
-    // ピンの影（視認性向上のための白いハロー）
+    const group = document.createElementNS(svgNS, 'g');
+    group.setAttribute('class', 'search-pin-group');
+
+    // 1. 接地影 (Ground Shadow)
     const shadow = document.createElementNS(svgNS, 'ellipse');
     shadow.setAttribute('cx', cx);
     shadow.setAttribute('cy', cy);
-    shadow.setAttribute('rx', '900');
+    shadow.setAttribute('rx', '850');
     shadow.setAttribute('ry', '350');
-    shadow.setAttribute('fill', 'rgba(0, 0, 0, 0.35)');
-    this.layerHighlight.appendChild(shadow);
+    shadow.setAttribute('fill', 'rgba(15, 23, 42, 0.45)');
+    group.appendChild(shadow);
 
-    const pin = document.createElementNS(svgNS, 'text');
-    pin.setAttribute('x', cx);
-    pin.setAttribute('y', cy);
-    pin.setAttribute('text-anchor', 'middle');
-    pin.setAttribute('font-size', '4200');
-    pin.setAttribute('class', 'search-pin-marker');
-    pin.textContent = '📍';
-    this.layerHighlight.appendChild(pin);
+    // 2. ピンの針 (Stem Needle)
+    const needle = document.createElementNS(svgNS, 'line');
+    needle.setAttribute('x1', cx);
+    needle.setAttribute('y1', cy);
+    needle.setAttribute('x2', cx);
+    needle.setAttribute('y2', cy - 3200);
+    needle.setAttribute('stroke', '#e2e8f0');
+    needle.setAttribute('stroke-width', '240');
+    needle.setAttribute('stroke-linecap', 'round');
+    group.appendChild(needle);
+
+    // 3. ピンの赤色頭部 (Red Ball Head)
+    const head = document.createElementNS(svgNS, 'circle');
+    head.setAttribute('cx', cx);
+    head.setAttribute('cy', cy - 3600);
+    head.setAttribute('r', '1400');
+    head.setAttribute('fill', '#ef4444');
+    head.setAttribute('stroke', '#b91c1c');
+    head.setAttribute('stroke-width', '160');
+    group.appendChild(head);
+
+    // 4. ピン頭部のツヤハイライト (Gloss Highlight)
+    const highlight = document.createElementNS(svgNS, 'circle');
+    highlight.setAttribute('cx', cx - 450);
+    highlight.setAttribute('cy', cy - 4050);
+    highlight.setAttribute('r', '450');
+    highlight.setAttribute('fill', 'rgba(255, 255, 255, 0.85)');
+    group.appendChild(highlight);
+
+    this.layerHighlight.appendChild(group);
   }
 
   // ========================================================================
@@ -2782,6 +3032,7 @@ class FloorplanApp {
       if (this.renderer3D) {
         this.renderer3D.highlightRoom(floor, room.room_id);
       }
+      this.updateRoutePath();
       this.renderEditorCard();
     } else {
       this.switchToFloor(floor, room.room_id);

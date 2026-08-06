@@ -30362,7 +30362,9 @@ export const B3_FLOORS_DATA = {
             ]
           ],
           "display_number": "118",
-          "display_label": "大講義室1"
+          "display_label": "大講義室1",
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_113_W",
@@ -30399,7 +30401,9 @@ export const B3_FLOORS_DATA = {
           ],
           "svg_fill": "#d8d8d8",
           "display_number": "112",
-          "display_label": "保健室庫"
+          "display_label": "保健室庫",
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_1W09_W",
@@ -30435,12 +30439,14 @@ export const B3_FLOORS_DATA = {
             ]
           ],
           "display_number": "113",
-          "display_label": "相談室2"
+          "display_label": "相談室2",
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_1W11_W",
           "room_number": "114",
-          "room_name": "相談室2",
+          "room_name": "相談室1",
           "category": "office",
           "center_point_mm": [
             3655,
@@ -30471,7 +30477,9 @@ export const B3_FLOORS_DATA = {
             ]
           ],
           "display_number": "114",
-          "display_label": "相談室2"
+          "display_label": "相談室1",
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_1W13_W",
@@ -30507,7 +30515,9 @@ export const B3_FLOORS_DATA = {
             ]
           ],
           "display_number": "115",
-          "display_label": "保健室"
+          "display_label": "保健室",
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785557979022",
@@ -30543,7 +30553,9 @@ export const B3_FLOORS_DATA = {
               24276,
               26688
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785558001626",
@@ -30579,7 +30591,9 @@ export const B3_FLOORS_DATA = {
               28946,
               44420
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785558030277",
@@ -30615,7 +30629,9 @@ export const B3_FLOORS_DATA = {
               -41,
               32917
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785558045335",
@@ -30651,7 +30667,9 @@ export const B3_FLOORS_DATA = {
               -41,
               15149
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785558056592",
@@ -30687,7 +30705,9 @@ export const B3_FLOORS_DATA = {
               -23,
               9410
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785560667204",
@@ -30723,7 +30743,9 @@ export const B3_FLOORS_DATA = {
               40238,
               54052
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785560675206",
@@ -30759,7 +30781,9 @@ export const B3_FLOORS_DATA = {
               40238,
               50648
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785560683503",
@@ -30795,7 +30819,9 @@ export const B3_FLOORS_DATA = {
               40238,
               38359
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785560691320",
@@ -30831,7 +30857,9 @@ export const B3_FLOORS_DATA = {
               40238,
               29438
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785560700361",
@@ -30867,7 +30895,9 @@ export const B3_FLOORS_DATA = {
               40238,
               18011
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785560706475",
@@ -30903,7 +30933,9 @@ export const B3_FLOORS_DATA = {
               40238,
               13575
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785560713107",
@@ -30939,7 +30971,9 @@ export const B3_FLOORS_DATA = {
               40238,
               9199
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785560747184",
@@ -30975,7 +31009,9 @@ export const B3_FLOORS_DATA = {
               19300,
               28708
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_MERGED_1785560771333",
@@ -31011,7 +31047,9 @@ export const B3_FLOORS_DATA = {
               10950,
               44270
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_MERGED_1785561413993",
@@ -31047,7 +31085,9 @@ export const B3_FLOORS_DATA = {
               40238,
               4580
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785570181969",
@@ -31083,7 +31123,9 @@ export const B3_FLOORS_DATA = {
               19443,
               44321
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785573099494",
@@ -31119,7 +31161,9 @@ export const B3_FLOORS_DATA = {
               11530,
               53917
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785573128573",
@@ -31155,7 +31199,9 @@ export const B3_FLOORS_DATA = {
               28202,
               54108
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785573180195",
@@ -31191,7 +31237,9 @@ export const B3_FLOORS_DATA = {
               33293,
               54108
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785573241465",
@@ -31227,7 +31275,9 @@ export const B3_FLOORS_DATA = {
               11276,
               6128
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785573263556",
@@ -31263,7 +31313,9 @@ export const B3_FLOORS_DATA = {
               15284,
               6128
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785573320804",
@@ -31299,7 +31351,9 @@ export const B3_FLOORS_DATA = {
               16939,
               53726
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785573338886",
@@ -31335,7 +31389,9 @@ export const B3_FLOORS_DATA = {
               31702,
               6574
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "1F_NEW_1785573356266",
@@ -31371,7 +31427,9 @@ export const B3_FLOORS_DATA = {
               28393,
               3137
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         }
       ]
     },
@@ -64323,6 +64381,7 @@ export const B3_FLOORS_DATA = {
               13712.8
             ]
           ],
+          "teachers": [],
           "affiliation": "product_design"
         },
         {
@@ -64360,6 +64419,7 @@ export const B3_FLOORS_DATA = {
               27010.5
             ]
           ],
+          "teachers": [],
           "affiliation": "product_design"
         },
         {
@@ -64397,6 +64457,7 @@ export const B3_FLOORS_DATA = {
               40295.700000000004
             ]
           ],
+          "teachers": [],
           "affiliation": "energy_machine"
         },
         {
@@ -64434,6 +64495,7 @@ export const B3_FLOORS_DATA = {
               41296
             ]
           ],
+          "teachers": [],
           "affiliation": "electronics"
         },
         {
@@ -64471,6 +64533,7 @@ export const B3_FLOORS_DATA = {
               27010.5
             ]
           ],
+          "teachers": [],
           "affiliation": "intelligent_info"
         },
         {
@@ -64508,6 +64571,7 @@ export const B3_FLOORS_DATA = {
               13712.8
             ]
           ],
+          "teachers": [],
           "affiliation": "intelligent_info"
         },
         {
@@ -64545,6 +64609,7 @@ export const B3_FLOORS_DATA = {
               45102
             ]
           ],
+          "teachers": [],
           "affiliation": "energy_machine"
         },
         {
@@ -64582,6 +64647,7 @@ export const B3_FLOORS_DATA = {
               28244
             ]
           ],
+          "teachers": [],
           "affiliation": "product_design"
         },
         {
@@ -64619,6 +64685,7 @@ export const B3_FLOORS_DATA = {
               28244
             ]
           ],
+          "teachers": [],
           "affiliation": "intelligent_info"
         },
         {
@@ -64656,6 +64723,7 @@ export const B3_FLOORS_DATA = {
               45045
             ]
           ],
+          "teachers": [],
           "affiliation": "electronics"
         },
         {
@@ -64693,6 +64761,7 @@ export const B3_FLOORS_DATA = {
               53955
             ]
           ],
+          "teachers": [],
           "affiliation": "energy_machine"
         },
         {
@@ -64730,6 +64799,7 @@ export const B3_FLOORS_DATA = {
               54485
             ]
           ],
+          "teachers": [],
           "affiliation": "electronics"
         },
         {
@@ -64766,7 +64836,9 @@ export const B3_FLOORS_DATA = {
               19510,
               45222
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785570135241",
@@ -64802,7 +64874,9 @@ export const B3_FLOORS_DATA = {
               21001,
               23101
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785570973583",
@@ -64838,7 +64912,9 @@ export const B3_FLOORS_DATA = {
               19621,
               6197
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785570993425",
@@ -64874,7 +64950,9 @@ export const B3_FLOORS_DATA = {
               19870,
               54059
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785572496039",
@@ -64910,7 +64988,9 @@ export const B3_FLOORS_DATA = {
               32672,
               54059
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785572566097",
@@ -64946,7 +65026,9 @@ export const B3_FLOORS_DATA = {
               28281,
               54059
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785572746619",
@@ -64982,7 +65064,9 @@ export const B3_FLOORS_DATA = {
               31526,
               6205
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785572790936",
@@ -65018,7 +65102,9 @@ export const B3_FLOORS_DATA = {
               11163,
               53918
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785572857861",
@@ -65054,7 +65140,9 @@ export const B3_FLOORS_DATA = {
               28918,
               3514
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785572885808",
@@ -65090,7 +65178,9 @@ export const B3_FLOORS_DATA = {
               16697,
               53920
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785572913571",
@@ -65126,7 +65216,9 @@ export const B3_FLOORS_DATA = {
               11279,
               6626
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "2F_NEW_1785572947950",
@@ -65162,7 +65254,9 @@ export const B3_FLOORS_DATA = {
               15604,
               6626
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         }
       ]
     },
@@ -97279,10 +97373,12 @@ export const B3_FLOORS_DATA = {
             ]
           ],
           "svg_fill": "#bfaad4",
-          "affiliation": "general_subjects",
+          "display_number": "307",
+          "display_label": "研究室1(英語)",
           "teachers": [
             "谷野"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "3F_309_W",
@@ -97320,10 +97416,10 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#bfaad4",
           "display_number": "308",
           "display_label": "研究室2(英語)",
-          "affiliation": "general_subjects",
           "teachers": [
             "松井"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "3F_311_W",
@@ -97360,10 +97456,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "309",
           "display_label": "研究室3(英語)",
-          "affiliation": "general_subjects",
           "teachers": [
             "（空き）"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "3F_3W09_W",
@@ -97401,6 +97497,7 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#c3fdfd",
           "display_number": "310",
           "display_label": "知能情報 2年 HR",
+          "teachers": [],
           "affiliation": "intelligent_info"
         },
         {
@@ -97439,6 +97536,7 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#bfaad4",
           "display_number": "321",
           "display_label": "語学ラボ",
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
@@ -97477,6 +97575,7 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#87c397",
           "display_number": "311",
           "display_label": "エレクトロニクス 2年 HR",
+          "teachers": [],
           "affiliation": "electronics"
         },
         {
@@ -97515,6 +97614,7 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#bfaad4",
           "display_number": "322",
           "display_label": "端末室",
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
@@ -97553,6 +97653,7 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#fbf9b5",
           "display_number": "312",
           "display_label": "プロダクトデザイン 2年 HR",
+          "teachers": [],
           "affiliation": "product_design"
         },
         {
@@ -97562,41 +97663,42 @@ export const B3_FLOORS_DATA = {
           "category": "classroom",
           "center_point_mm": [
             4004,
-            48386.2
+            48636.5
           ],
           "bounding_box_mm": {
-            "x": 4.2,
-            "y": 42759.7,
-            "width": 7999.7,
-            "height": 11253
+            "x": 4,
+            "y": 42760,
+            "width": 8000,
+            "height": 11753
           },
           "polygon_mm": [
             [
-              4.2,
-              42759.7
+              4,
+              42760
             ],
             [
-              8003.9,
-              42759.7
+              8004,
+              42760
             ],
             [
-              8003.9,
-              54012.7
+              8004,
+              54513
             ],
             [
-              4.2,
-              54012.7
+              4,
+              54513
             ]
           ],
           "svg_fill": "#ffb3b3",
           "display_number": "313",
           "display_label": "エネルギー機械 2年 HR",
+          "teachers": [],
           "affiliation": "energy_machine"
         },
         {
           "room_id": "3F_306_E",
           "room_number": "306",
-          "room_name": "演習室2",
+          "room_name": "実習室2",
           "category": "classroom",
           "center_point_mm": [
             44395.9,
@@ -97627,6 +97729,9 @@ export const B3_FLOORS_DATA = {
             ]
           ],
           "svg_fill": "#bfaad4",
+          "display_number": "306",
+          "display_label": "実習室2",
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
@@ -97665,6 +97770,7 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#bfaad4",
           "display_number": "304",
           "display_label": "1年HR ④",
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
@@ -97703,6 +97809,7 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#bfaad4",
           "display_number": "303",
           "display_label": "1年HR ③",
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
@@ -97741,6 +97848,7 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#bfaad4",
           "display_number": "302",
           "display_label": "1年HR ②",
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
@@ -97749,44 +97857,45 @@ export const B3_FLOORS_DATA = {
           "room_name": "1年HR ①",
           "category": "classroom",
           "center_point_mm": [
-            44395.9,
-            48386.2
+            44896,
+            48386.5
           ],
           "bounding_box_mm": {
-            "x": 40396.1,
-            "y": 42759.7,
-            "width": 7999.7,
+            "x": 40896,
+            "y": 42760,
+            "width": 8000,
             "height": 11253
           },
           "polygon_mm": [
             [
-              40396.1,
-              42759.7
+              40896,
+              42760
             ],
             [
-              48395.799999999996,
-              42759.7
+              48896,
+              42760
             ],
             [
-              48395.799999999996,
-              54012.7
+              48896,
+              54013
             ],
             [
-              40396.1,
-              54012.7
+              40896,
+              54013
             ]
           ],
           "svg_fill": "#bfaad4",
           "display_number": "301",
           "display_label": "1年HR ①",
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
           "room_id": "3F_MERGED_1785558740845",
           "room_number": "305",
-          "room_name": "演習室1",
+          "room_name": "実習室1",
           "display_number": "305",
-          "display_label": "演習室1",
+          "display_label": "実習室1",
           "category": "classroom",
           "center_point_mm": [
             44395.95,
@@ -97816,6 +97925,7 @@ export const B3_FLOORS_DATA = {
               9013.4
             ]
           ],
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
@@ -97853,6 +97963,7 @@ export const B3_FLOORS_DATA = {
               15203
             ]
           ],
+          "teachers": [],
           "affiliation": "chief_office"
         },
         {
@@ -97890,6 +98001,7 @@ export const B3_FLOORS_DATA = {
               18051
             ]
           ],
+          "teachers": [],
           "affiliation": "chief_office"
         },
         {
@@ -97927,6 +98039,7 @@ export const B3_FLOORS_DATA = {
               21012
             ]
           ],
+          "teachers": [],
           "affiliation": "chief_office"
         },
         {
@@ -97964,6 +98077,7 @@ export const B3_FLOORS_DATA = {
               44938
             ]
           ],
+          "teachers": [],
           "affiliation": "chief_office"
         },
         {
@@ -98001,6 +98115,7 @@ export const B3_FLOORS_DATA = {
               11934
             ]
           ],
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
@@ -98038,6 +98153,7 @@ export const B3_FLOORS_DATA = {
               12099
             ]
           ],
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
@@ -98075,6 +98191,7 @@ export const B3_FLOORS_DATA = {
               15100
             ]
           ],
+          "teachers": [],
           "affiliation": "general_subjects"
         },
         {
@@ -98111,7 +98228,9 @@ export const B3_FLOORS_DATA = {
               19391,
               45044
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "3F_NEW_1785571057267",
@@ -98121,13 +98240,13 @@ export const B3_FLOORS_DATA = {
           "display_label": "吹き抜け",
           "category": "classroom",
           "center_point_mm": [
-            24581.5,
+            24331.5,
             49973.5
           ],
           "bounding_box_mm": {
             "x": 20182,
             "y": 47883,
-            "width": 8799,
+            "width": 8299,
             "height": 4181
           },
           "polygon_mm": [
@@ -98136,18 +98255,20 @@ export const B3_FLOORS_DATA = {
               47883
             ],
             [
-              28981,
+              28481,
               47883
             ],
             [
-              28981,
+              28481,
               52064
             ],
             [
               20182,
               52064
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "3F_NEW_1785571078264",
@@ -98183,7 +98304,9 @@ export const B3_FLOORS_DATA = {
               19744,
               5761
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "3F_NEW_1785571637569",
@@ -98219,7 +98342,9 @@ export const B3_FLOORS_DATA = {
               33200,
               54435
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "3F_NEW_1785571682096",
@@ -98255,7 +98380,9 @@ export const B3_FLOORS_DATA = {
               28892,
               54435
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "3F_NEW_1785571748554",
@@ -98291,7 +98418,9 @@ export const B3_FLOORS_DATA = {
               31724,
               6483
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "3F_NEW_1785571769708",
@@ -98327,7 +98456,9 @@ export const B3_FLOORS_DATA = {
               28668,
               4076
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "3F_NEW_1785571845929",
@@ -98363,7 +98494,9 @@ export const B3_FLOORS_DATA = {
               11106,
               6426
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "3F_NEW_1785571873835",
@@ -98399,7 +98532,9 @@ export const B3_FLOORS_DATA = {
               15548,
               6426
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "3F_NEW_1785572405309",
@@ -98435,7 +98570,9 @@ export const B3_FLOORS_DATA = {
               11229,
               54101
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "3F_NEW_1785572424828",
@@ -98471,7 +98608,9 @@ export const B3_FLOORS_DATA = {
               16956,
               54228
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         }
       ]
     },
@@ -122214,37 +122353,39 @@ export const B3_FLOORS_DATA = {
           "room_name": "M1実験室",
           "category": "lab",
           "center_point_mm": [
-            4245.3,
-            3313.1
+            4246,
+            3208
           ],
           "bounding_box_mm": {
-            "x": -8.5,
-            "y": 355.1,
-            "width": 8507.6,
-            "height": 5916
+            "x": -8,
+            "y": 0,
+            "width": 8508,
+            "height": 6416
           },
           "polygon_mm": [
             [
-              -8.5,
-              355.1
+              -8,
+              0
             ],
             [
-              8499.1,
-              355.1
+              8500,
+              0
             ],
             [
-              8499.1,
-              6271.1
+              8500,
+              6416
             ],
             [
-              -8.5,
-              6271.1
+              -8,
+              6416
             ]
           ],
-          "affiliation": "energy_machine",
+          "display_number": "413",
+          "display_label": "M1実験室",
           "teachers": [
             "平林大介"
-          ]
+          ],
+          "affiliation": "energy_machine"
         },
         {
           "room_id": "4F_415_W",
@@ -122281,10 +122422,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "414",
           "display_label": "研究室10",
-          "affiliation": "energy_machine",
           "teachers": [
             "久野章仁"
-          ]
+          ],
+          "affiliation": "energy_machine"
         },
         {
           "room_id": "4F_417_W",
@@ -122292,39 +122433,39 @@ export const B3_FLOORS_DATA = {
           "room_name": "分析室2",
           "category": "lab",
           "center_point_mm": [
-            15092,
-            10257
+            14841.7,
+            10256.9
           ],
           "bounding_box_mm": {
-            "x": 10493,
-            "y": 9104,
-            "width": 9198,
-            "height": 2306
+            "x": 10492.7,
+            "y": 9103.8,
+            "width": 8698,
+            "height": 2306.2
           },
           "polygon_mm": [
             [
-              10493,
-              9104
+              10492.7,
+              9103.8
             ],
             [
-              19691,
-              9104
+              19190.7,
+              9103.8
             ],
             [
-              19691,
+              19190.7,
               11410
             ],
             [
-              10493,
+              10492.7,
               11410
             ]
           ],
           "display_number": "426",
           "display_label": "分析室2",
-          "affiliation": "electronics_advanced",
           "teachers": [
             "辻元"
-          ]
+          ],
+          "affiliation": "electronics_advanced"
         },
         {
           "room_id": "4F_4W07_W",
@@ -122361,10 +122502,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "415",
           "display_label": "M2実験室",
-          "affiliation": "energy_machine",
           "teachers": [
             "西岡求"
-          ]
+          ],
+          "affiliation": "energy_machine"
         },
         {
           "room_id": "4F_4W13_W",
@@ -122402,10 +122543,10 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#87c397",
           "display_number": "416",
           "display_label": "卒研室兼応用専門PBL実験室1",
-          "affiliation": "electronics_advanced",
           "teachers": [
             "辻元/平林"
-          ]
+          ],
+          "affiliation": "electronics_advanced"
         },
         {
           "room_id": "4F_410_E",
@@ -122413,37 +122554,39 @@ export const B3_FLOORS_DATA = {
           "room_name": "E4実験室",
           "category": "lab",
           "center_point_mm": [
-            44135.6,
-            2673.8
+            44135.5,
+            2569
           ],
           "bounding_box_mm": {
-            "x": 39888.2,
-            "y": 355.1,
-            "width": 8494.9,
-            "height": 4637.5
+            "x": 39888,
+            "y": 0,
+            "width": 8495,
+            "height": 5138
           },
           "polygon_mm": [
             [
-              39888.2,
-              355.1
+              39888,
+              0
             ],
             [
-              48383.1,
-              355.1
+              48383,
+              0
             ],
             [
-              48383.1,
-              4992.6
+              48383,
+              5138
             ],
             [
-              39888.2,
-              4992.6
+              39888,
+              5138
             ]
           ],
-          "affiliation": "electronics",
+          "display_number": "410",
+          "display_label": "E4実験室",
           "teachers": [
             "野田達夫"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "4F_402_E",
@@ -122480,10 +122623,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "408",
           "display_label": "E2実験室",
-          "affiliation": "electronics",
           "teachers": [
             "辻元英孝"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "4F_4E15_E",
@@ -122492,13 +122635,13 @@ export const B3_FLOORS_DATA = {
           "category": "lab",
           "center_point_mm": [
             44135.5,
-            16600
+            16850
           ],
           "bounding_box_mm": {
             "x": 39888,
             "y": 14500,
             "width": 8495,
-            "height": 4200
+            "height": 4700
           },
           "polygon_mm": [
             [
@@ -122511,19 +122654,19 @@ export const B3_FLOORS_DATA = {
             ],
             [
               48383,
-              18700
+              19200
             ],
             [
               39888,
-              18700
+              19200
             ]
           ],
           "display_number": "407",
           "display_label": "M4実験室",
-          "affiliation": "energy_machine",
           "teachers": [
             "玉置友史"
-          ]
+          ],
+          "affiliation": "energy_machine"
         },
         {
           "room_id": "4F_4E33_E",
@@ -122561,10 +122704,10 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#87c397",
           "display_number": "404",
           "display_label": "薬品保管室",
-          "affiliation": "electronics_advanced",
           "teachers": [
             "辻元"
-          ]
+          ],
+          "affiliation": "electronics_advanced"
         },
         {
           "room_id": "4F_4E41_E",
@@ -122602,10 +122745,10 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#87c397",
           "display_number": "402",
           "display_label": "P1実験室",
-          "affiliation": "electronics_advanced",
           "teachers": [
             "倉橋健介/西岡求"
-          ]
+          ],
+          "affiliation": "electronics_advanced"
         },
         {
           "room_id": "4F_NEW_1785558864943",
@@ -122642,10 +122785,10 @@ export const B3_FLOORS_DATA = {
               53700
             ]
           ],
-          "affiliation": "general_subjects",
           "teachers": [
             "北野/西田/吉川"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "4F_NEW_1785559014550",
@@ -122655,13 +122798,13 @@ export const B3_FLOORS_DATA = {
           "display_label": "M３実験室",
           "category": "lab",
           "center_point_mm": [
-            14957,
+            14707,
             34252.5
           ],
           "bounding_box_mm": {
             "x": 10379,
             "y": 33028,
-            "width": 9156,
+            "width": 8656,
             "height": 2449
           },
           "polygon_mm": [
@@ -122670,11 +122813,11 @@ export const B3_FLOORS_DATA = {
               33028
             ],
             [
-              19535,
+              19035,
               33028
             ],
             [
-              19535,
+              19035,
               35477
             ],
             [
@@ -122682,10 +122825,10 @@ export const B3_FLOORS_DATA = {
               35477
             ]
           ],
-          "affiliation": "energy_machine",
           "teachers": [
             "久野章仁"
-          ]
+          ],
+          "affiliation": "energy_machine"
         },
         {
           "room_id": "4F_NEW_1785559023039",
@@ -122695,13 +122838,13 @@ export const B3_FLOORS_DATA = {
           "display_label": "化学備品室",
           "category": "lab",
           "center_point_mm": [
-            14928.5,
+            14678.5,
             37185.5
           ],
           "bounding_box_mm": {
             "x": 10379,
             "y": 35534,
-            "width": 9099,
+            "width": 8599,
             "height": 3303
           },
           "polygon_mm": [
@@ -122710,11 +122853,11 @@ export const B3_FLOORS_DATA = {
               35534
             ],
             [
-              19478,
+              18978,
               35534
             ],
             [
-              19478,
+              18978,
               38837
             ],
             [
@@ -122722,10 +122865,10 @@ export const B3_FLOORS_DATA = {
               38837
             ]
           ],
-          "affiliation": "general_subjects",
           "teachers": [
             "北野/西田/吉川"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "4F_NEW_1785559029368",
@@ -122735,13 +122878,13 @@ export const B3_FLOORS_DATA = {
           "display_label": "研究室8 化学",
           "category": "research",
           "center_point_mm": [
-            14957,
+            14707,
             40289
           ],
           "bounding_box_mm": {
             "x": 10379,
             "y": 38894,
-            "width": 9156,
+            "width": 8656,
             "height": 2790
           },
           "polygon_mm": [
@@ -122750,11 +122893,11 @@ export const B3_FLOORS_DATA = {
               38894
             ],
             [
-              19535,
+              19035,
               38894
             ],
             [
-              19535,
+              19035,
               41684
             ],
             [
@@ -122762,10 +122905,10 @@ export const B3_FLOORS_DATA = {
               41684
             ]
           ],
-          "affiliation": "general_subjects",
           "teachers": [
             "西田(吉川)"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "4F_NEW_1785559036138",
@@ -122775,13 +122918,13 @@ export const B3_FLOORS_DATA = {
           "display_label": "研究室9 化学",
           "category": "research",
           "center_point_mm": [
-            14956,
+            14706,
             43308
           ],
           "bounding_box_mm": {
             "x": 10492,
             "y": 41685,
-            "width": 8928,
+            "width": 8428,
             "height": 3246
           },
           "polygon_mm": [
@@ -122790,11 +122933,11 @@ export const B3_FLOORS_DATA = {
               41685
             ],
             [
-              19420,
+              18920,
               41685
             ],
             [
-              19420,
+              18920,
               44931
             ],
             [
@@ -122802,10 +122945,10 @@ export const B3_FLOORS_DATA = {
               44931
             ]
           ],
-          "affiliation": "general_subjects",
           "teachers": [
             "北野"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "4F_NEW_1785559053260",
@@ -122842,10 +122985,10 @@ export const B3_FLOORS_DATA = {
               12185
             ]
           ],
-          "affiliation": "energy_machine",
           "teachers": [
             "西岡求"
-          ]
+          ],
+          "affiliation": "energy_machine"
         },
         {
           "room_id": "4F_NEW_1785559063109",
@@ -122882,10 +123025,10 @@ export const B3_FLOORS_DATA = {
               15260
             ]
           ],
-          "affiliation": "general_subjects",
           "teachers": [
             "金井"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "4F_NEW_1785559069527",
@@ -122922,10 +123065,10 @@ export const B3_FLOORS_DATA = {
               18392
             ]
           ],
-          "affiliation": "general_subjects",
           "teachers": [
             "松永"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "4F_NEW_1785559075191",
@@ -122962,10 +123105,10 @@ export const B3_FLOORS_DATA = {
               21012
             ]
           ],
-          "affiliation": "general_subjects",
           "teachers": [
             "佐藤"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "4F_NEW_1785560489739",
@@ -122975,13 +123118,13 @@ export const B3_FLOORS_DATA = {
           "display_label": "非常勤講師控室",
           "category": "office",
           "center_point_mm": [
-            24354.5,
+            24104.5,
             5192.5
           ],
           "bounding_box_mm": {
             "x": 19759,
             "y": 3673,
-            "width": 9191,
+            "width": 8691,
             "height": 3039
           },
           "polygon_mm": [
@@ -122990,18 +123133,20 @@ export const B3_FLOORS_DATA = {
               3673
             ],
             [
-              28950,
+              28450,
               3673
             ],
             [
-              28950,
+              28450,
               6712
             ],
             [
               19759,
               6712
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785560517582",
@@ -123037,24 +123182,26 @@ export const B3_FLOORS_DATA = {
               19819,
               50105
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785560524440",
           "room_number": "420",
-          "room_name": "倉庫2",
+          "room_name": "倉庫1",
           "display_number": "420",
-          "display_label": "倉庫2",
+          "display_label": "倉庫1",
           "category": "core",
           "center_point_mm": [
             30090.5,
-            50538
+            50683.5
           ],
           "bounding_box_mm": {
             "x": 28328,
             "y": 47188,
             "width": 3525,
-            "height": 6700
+            "height": 6991
           },
           "polygon_mm": [
             [
@@ -123067,13 +123214,15 @@ export const B3_FLOORS_DATA = {
             ],
             [
               31853,
-              53888
+              54179
             ],
             [
               28328,
-              53888
+              54179
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785563281147",
@@ -123110,10 +123259,10 @@ export const B3_FLOORS_DATA = {
               34988
             ]
           ],
-          "affiliation": "general_subjects",
           "teachers": [
             "北野/西田/吉川"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "4F_NEW_1785563375881",
@@ -123123,13 +123272,13 @@ export const B3_FLOORS_DATA = {
           "display_label": "卒研室兼応用専門PBL実験室2",
           "category": "lab",
           "center_point_mm": [
-            14980,
+            14730,
             22139
           ],
           "bounding_box_mm": {
             "x": 10435,
             "y": 11519,
-            "width": 9090,
+            "width": 8590,
             "height": 21240
           },
           "polygon_mm": [
@@ -123138,11 +123287,11 @@ export const B3_FLOORS_DATA = {
               11519
             ],
             [
-              19525,
+              19025,
               11519
             ],
             [
-              19525,
+              19025,
               32759
             ],
             [
@@ -123150,10 +123299,10 @@ export const B3_FLOORS_DATA = {
               32759
             ]
           ],
-          "affiliation": "electronics_advanced",
           "teachers": [
             "辻元/平林"
-          ]
+          ],
+          "affiliation": "electronics_advanced"
         },
         {
           "room_id": "4F_NEW_1785563769042",
@@ -123190,16 +123339,16 @@ export const B3_FLOORS_DATA = {
               23187
             ]
           ],
-          "affiliation": "electronics",
           "teachers": [
             "田村生弥"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "4F_NEW_1785563882754",
-          "room_number": "405",
+          "room_number": "406",
           "room_name": "物理備品室",
-          "display_number": "405",
+          "display_number": "406",
           "display_label": "物理備品室",
           "category": "lab",
           "center_point_mm": [
@@ -123230,10 +123379,10 @@ export const B3_FLOORS_DATA = {
               26346
             ]
           ],
-          "affiliation": "general_subjects",
           "teachers": [
             "佐藤/松永/金井"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "4F_NEW_1785563896972",
@@ -123244,13 +123393,13 @@ export const B3_FLOORS_DATA = {
           "category": "lab",
           "center_point_mm": [
             44135.5,
-            51288
+            51538
           ],
           "bounding_box_mm": {
             "x": 39888,
             "y": 48868,
             "width": 8495,
-            "height": 4840
+            "height": 5340
           },
           "polygon_mm": [
             [
@@ -123263,17 +123412,17 @@ export const B3_FLOORS_DATA = {
             ],
             [
               48383,
-              53708
+              54208
             ],
             [
               39888,
-              53708
+              54208
             ]
           ],
-          "affiliation": "product_design",
           "teachers": [
             "倉橋健介"
-          ]
+          ],
+          "affiliation": "product_design"
         },
         {
           "room_id": "4F_NEW_1785563928377",
@@ -123310,10 +123459,10 @@ export const B3_FLOORS_DATA = {
               44574
             ]
           ],
-          "affiliation": "electronics_advanced",
           "teachers": [
             "辻元"
-          ]
+          ],
+          "affiliation": "electronics_advanced"
         },
         {
           "room_id": "4F_NEW_1785564180743",
@@ -123350,10 +123499,10 @@ export const B3_FLOORS_DATA = {
               9490
             ]
           ],
-          "affiliation": "electronics",
           "teachers": [
             "東田卓"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "4F_MERGED_1785564885210",
@@ -123390,10 +123539,10 @@ export const B3_FLOORS_DATA = {
               45044
             ]
           ],
-          "affiliation": "general_subjects",
           "teachers": [
             "佐藤/松永/金井"
-          ]
+          ],
+          "affiliation": "general_subjects"
         },
         {
           "room_id": "4F_NEW_1785570027146",
@@ -123429,7 +123578,9 @@ export const B3_FLOORS_DATA = {
               19391,
               44865
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785571122069",
@@ -123440,13 +123591,13 @@ export const B3_FLOORS_DATA = {
           "category": "classroom",
           "center_point_mm": [
             36409,
-            50538
+            50683.5
           ],
           "bounding_box_mm": {
             "x": 35159,
             "y": 47188,
             "width": 2500,
-            "height": 6700
+            "height": 6991
           },
           "polygon_mm": [
             [
@@ -123459,30 +123610,32 @@ export const B3_FLOORS_DATA = {
             ],
             [
               37659,
-              53888
+              54179
             ],
             [
               35159,
-              53888
+              54179
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785571147942",
           "room_number": "",
-          "room_name": "女子/多目的トイレ",
+          "room_name": "女子トイレ/多目的トイレ",
           "display_number": "",
-          "display_label": "女子/多目的トイレ",
+          "display_label": "女子トイレ/多目的トイレ",
           "category": "classroom",
           "center_point_mm": [
             33414,
-            50538
+            50683.5
           ],
           "bounding_box_mm": {
             "x": 31914,
             "y": 47188,
             "width": 3000,
-            "height": 6700
+            "height": 6991
           },
           "polygon_mm": [
             [
@@ -123495,20 +123648,22 @@ export const B3_FLOORS_DATA = {
             ],
             [
               34914,
-              53888
+              54179
             ],
             [
               31914,
-              53888
+              54179
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785571221809",
           "room_number": "",
-          "room_name": "男子トイレ/多目的トイレ",
+          "room_name": "男子トイレ",
           "display_number": "",
-          "display_label": "男子トイレ/多目的トイレ",
+          "display_label": "男子トイレ",
           "category": "classroom",
           "center_point_mm": [
             12255,
@@ -123537,7 +123692,9 @@ export const B3_FLOORS_DATA = {
               11005,
               6755
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785571250693",
@@ -123573,7 +123730,9 @@ export const B3_FLOORS_DATA = {
               13812,
               6755
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785571315883",
@@ -123609,7 +123768,9 @@ export const B3_FLOORS_DATA = {
               31594,
               6533
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785571337028",
@@ -123620,13 +123781,13 @@ export const B3_FLOORS_DATA = {
           "category": "classroom",
           "center_point_mm": [
             13871.5,
-            50757.5
+            50507.5
           ],
           "bounding_box_mm": {
             "x": 11126,
             "y": 47512,
             "width": 5491,
-            "height": 6491
+            "height": 5991
           },
           "polygon_mm": [
             [
@@ -123639,13 +123800,15 @@ export const B3_FLOORS_DATA = {
             ],
             [
               16617,
-              54003
+              53503
             ],
             [
               11126,
-              54003
+              53503
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785571354056",
@@ -123655,33 +123818,35 @@ export const B3_FLOORS_DATA = {
           "display_label": "EV",
           "category": "classroom",
           "center_point_mm": [
-            18460.5,
-            51598
+            18240.5,
+            52098
           ],
           "bounding_box_mm": {
-            "x": 16900,
-            "y": 49569,
-            "width": 3121,
-            "height": 4058
+            "x": 16930,
+            "y": 50569,
+            "width": 2621,
+            "height": 3058
           },
           "polygon_mm": [
             [
-              16900,
-              49569
+              16930,
+              50569
             ],
             [
-              20021,
-              49569
+              19551,
+              50569
             ],
             [
-              20021,
+              19551,
               53627
             ],
             [
-              16900,
+              16930,
               53627
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785571374073",
@@ -123717,7 +123882,9 @@ export const B3_FLOORS_DATA = {
               29161,
               3912
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "4F_NEW_1785572267727",
@@ -123753,7 +123920,9 @@ export const B3_FLOORS_DATA = {
               16932,
               6755
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         }
       ]
     },
@@ -169375,10 +169544,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "535",
           "display_label": "研究室56",
-          "affiliation": "energy_machine",
           "teachers": [
             "杉浦公彦"
-          ]
+          ],
+          "affiliation": "energy_machine"
         },
         {
           "room_id": "5F_5W83_W",
@@ -169426,31 +169595,31 @@ export const B3_FLOORS_DATA = {
           "room_name": "研究室58",
           "category": "research",
           "center_point_mm": [
-            4251.6,
-            52157.5
+            4251.5,
+            52408
           ],
           "bounding_box_mm": {
-            "x": 4.2,
-            "y": 50678.5,
-            "width": 8494.9,
-            "height": 2958
+            "x": 4,
+            "y": 50679,
+            "width": 8495,
+            "height": 3458
           },
           "polygon_mm": [
             [
-              4.2,
-              50678.5
+              4,
+              50679
             ],
             [
-              8499.1,
-              50678.5
+              8499,
+              50679
             ],
             [
-              8499.1,
-              53636.5
+              8499,
+              54137
             ],
             [
-              4.2,
-              53636.5
+              4,
+              54137
             ]
           ],
           "display_number": "537",
@@ -169467,37 +169636,38 @@ export const B3_FLOORS_DATA = {
           "category": "research",
           "center_point_mm": [
             44142,
-            1834.1
+            1479
           ],
           "bounding_box_mm": {
-            "x": 39888.2,
-            "y": 355.1,
-            "width": 8507.6,
+            "x": 39888,
+            "y": 0,
+            "width": 8508,
             "height": 2958
           },
           "polygon_mm": [
             [
-              39888.2,
-              355.1
+              39888,
+              0
             ],
             [
-              48395.799999999996,
-              355.1
+              48396,
+              0
             ],
             [
-              48395.799999999996,
-              3313.1
+              48396,
+              2958
             ],
             [
-              39888.2,
-              3313.1
+              39888,
+              2958
             ]
           ],
           "display_number": "518",
           "display_label": "研究室28",
           "teachers": [
             "(空き)"
-          ]
+          ],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_5E05_E",
@@ -169574,10 +169744,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "515",
           "display_label": "研究室25",
-          "affiliation": "intelligent_info",
           "teachers": [
             "山野高志"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_5E09_E",
@@ -169614,10 +169784,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "514",
           "display_label": "研究室24",
-          "affiliation": "intelligent_info",
           "teachers": [
             "窪田哲也"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_5E11_E",
@@ -169654,10 +169824,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "513",
           "display_label": "研究室23",
-          "affiliation": "intelligent_info",
           "teachers": [
             "(空き)"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_5E13_E",
@@ -169694,10 +169864,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "512",
           "display_label": "研究室22",
-          "affiliation": "intelligent_info",
           "teachers": [
             "早川潔"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_5E15_E",
@@ -169734,10 +169904,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "511",
           "display_label": "研究室21",
-          "affiliation": "intelligent_info",
           "teachers": [
             "吉田晃基"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_5E17_E",
@@ -169774,10 +169944,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "510",
           "display_label": "研究室20",
-          "affiliation": "intelligent_info",
           "teachers": [
             "和田健"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_5E19_E",
@@ -169814,10 +169984,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "509",
           "display_label": "研究室19",
-          "affiliation": "intelligent_info",
           "teachers": [
             "青木一弘"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_5E21_E",
@@ -169854,10 +170024,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "508",
           "display_label": "研究室18",
-          "affiliation": "intelligent_info",
           "teachers": [
             "木村裕太"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_5E23_E",
@@ -169894,10 +170064,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "507",
           "display_label": "研究室17",
-          "affiliation": "intelligent_info",
           "teachers": [
             "新妻弘崇"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_5E25_E",
@@ -169934,10 +170104,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "506",
           "display_label": "研究室16",
-          "affiliation": "intelligent_info",
           "teachers": [
             "土井智晴"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_5E27_E",
@@ -169974,10 +170144,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "505",
           "display_label": "研究室15",
-          "affiliation": "electronics",
           "teachers": [
             "重井宜行"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "5F_5E29_E",
@@ -170014,10 +170184,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "504",
           "display_label": "研究室14",
-          "affiliation": "electronics",
           "teachers": [
             "梅本敏孝"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "5F_5E31_E",
@@ -170054,10 +170224,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "503",
           "display_label": "研究室13",
-          "affiliation": "electronics",
           "teachers": [
             "前田篤志（不在）"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "5F_5E33_E",
@@ -170106,30 +170276,30 @@ export const B3_FLOORS_DATA = {
           "category": "research",
           "center_point_mm": [
             44142,
-            52157.5
+            52408
           ],
           "bounding_box_mm": {
-            "x": 39888.2,
-            "y": 50678.5,
-            "width": 8507.6,
-            "height": 2958
+            "x": 39888,
+            "y": 50679,
+            "width": 8508,
+            "height": 3458
           },
           "polygon_mm": [
             [
-              39888.2,
-              50678.5
+              39888,
+              50679
             ],
             [
-              48395.799999999996,
-              50678.5
+              48396,
+              50679
             ],
             [
-              48395.799999999996,
-              53636.5
+              48396,
+              54137
             ],
             [
-              39888.2,
-              53636.5
+              39888,
+              54137
             ]
           ],
           "display_number": "501",
@@ -170142,10 +170312,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559456136",
           "room_number": "551",
-          "room_name": "研究室29",
+          "room_name": "E5実験室",
           "display_number": "551",
-          "display_label": "研究室29",
-          "category": "research",
+          "display_label": "E5実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             10603
@@ -170182,10 +170352,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559530483",
           "room_number": "552",
-          "room_name": "研究30",
+          "room_name": "E6実験室",
           "display_number": "552",
-          "display_label": "研究30",
-          "category": "research",
+          "display_label": "E6実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             13610
@@ -170222,10 +170392,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559541981",
           "room_number": "553",
-          "room_name": "研究室31",
+          "room_name": "E7実験室",
           "display_number": "553",
-          "display_label": "研究室31",
-          "category": "research",
+          "display_label": "E7実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             16753
@@ -170262,10 +170432,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559551150",
           "room_number": "554",
-          "room_name": "研究室32",
+          "room_name": "I1実験室",
           "display_number": "554",
-          "display_label": "研究室32",
-          "category": "research",
+          "display_label": "I1実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             19725.5
@@ -170302,10 +170472,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559559591",
           "room_number": "555",
-          "room_name": "研究室33",
+          "room_name": "I2実験室",
           "display_number": "555",
-          "display_label": "研究室33",
-          "category": "research",
+          "display_label": "I2実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             22628
@@ -170342,10 +170512,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559575289",
           "room_number": "556",
-          "room_name": "研究室34",
+          "room_name": "I3実験室",
           "display_number": "556",
-          "display_label": "研究室34",
-          "category": "research",
+          "display_label": "I3実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             25559.5
@@ -170382,10 +170552,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559582219",
           "room_number": "557",
-          "room_name": "研究室35",
+          "room_name": "I4実験室",
           "display_number": "557",
-          "display_label": "研究室35",
-          "category": "research",
+          "display_label": "I4実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             28591
@@ -170422,10 +170592,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559590701",
           "room_number": "558",
-          "room_name": "研究室36",
+          "room_name": "I5実験室",
           "display_number": "558",
-          "display_label": "研究室36",
-          "category": "research",
+          "display_label": "I5実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             31516
@@ -170462,10 +170632,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559602861",
           "room_number": "559",
-          "room_name": "研究室37",
+          "room_name": "I6実験室",
           "display_number": "559",
-          "display_label": "研究室37",
-          "category": "research",
+          "display_label": "I6実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             34450.5
@@ -170502,10 +170672,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559610976",
           "room_number": "560",
-          "room_name": "研究室38",
+          "room_name": "I7実験室",
           "display_number": "560",
-          "display_label": "研究室38",
-          "category": "research",
+          "display_label": "I7実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             37313.5
@@ -170542,10 +170712,10 @@ export const B3_FLOORS_DATA = {
         {
           "room_id": "5F_NEW_1785559622001",
           "room_number": "561",
-          "room_name": "研究室39",
+          "room_name": "I8実験室",
           "display_number": "561",
-          "display_label": "研究室39",
-          "category": "research",
+          "display_label": "I8実験室",
+          "category": "lab",
           "center_point_mm": [
             14932,
             40374
@@ -170576,7 +170746,8 @@ export const B3_FLOORS_DATA = {
           ],
           "teachers": [
             "(空き)"
-          ]
+          ],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785559632730",
@@ -170615,15 +170786,16 @@ export const B3_FLOORS_DATA = {
           ],
           "teachers": [
             "(空き)"
-          ]
+          ],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785559654590",
           "room_number": "550",
-          "room_name": "I１実験室",
+          "room_name": "倉庫4",
           "display_number": "550",
-          "display_label": "I１実験室",
-          "category": "lab",
+          "display_label": "倉庫4",
+          "category": "core",
           "center_point_mm": [
             33450.5,
             10658
@@ -170652,18 +170824,18 @@ export const B3_FLOORS_DATA = {
               12114
             ]
           ],
-          "affiliation": "intelligent_info",
           "teachers": [
             "山野高志"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_NEW_1785559663150",
           "room_number": "549",
-          "room_name": "I１実験室",
+          "room_name": "研究室39",
           "display_number": "549",
-          "display_label": "I１実験室",
-          "category": "lab",
+          "display_label": "研究室39",
+          "category": "research",
           "center_point_mm": [
             33351.5,
             13694.5
@@ -170692,18 +170864,18 @@ export const B3_FLOORS_DATA = {
               15126
             ]
           ],
-          "affiliation": "intelligent_info",
           "teachers": [
             "窪田哲也"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_NEW_1785559670791",
           "room_number": "548",
-          "room_name": "I１実験室",
+          "room_name": "研究室38",
           "display_number": "548",
-          "display_label": "I１実験室",
-          "category": "lab",
+          "display_label": "研究室38",
+          "category": "research",
           "center_point_mm": [
             33401.5,
             16557.5
@@ -170732,18 +170904,18 @@ export const B3_FLOORS_DATA = {
               17989
             ]
           ],
-          "affiliation": "intelligent_info",
           "teachers": [
             "(空き)"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_NEW_1785559680041",
           "room_number": "547",
-          "room_name": "I１実験室",
+          "room_name": "研究室37",
           "display_number": "547",
-          "display_label": "I１実験室",
-          "category": "lab",
+          "display_label": "研究室37",
+          "category": "research",
           "center_point_mm": [
             33302.5,
             19543
@@ -170772,18 +170944,18 @@ export const B3_FLOORS_DATA = {
               20999
             ]
           ],
-          "affiliation": "intelligent_info",
           "teachers": [
             "早川潔"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_NEW_1785559687907",
           "room_number": "546",
-          "room_name": "I１実験室",
+          "room_name": "研究室36",
           "display_number": "546",
-          "display_label": "I１実験室",
-          "category": "lab",
+          "display_label": "研究室36",
+          "category": "research",
           "center_point_mm": [
             33327.5,
             22481
@@ -170812,18 +170984,18 @@ export const B3_FLOORS_DATA = {
               23962
             ]
           ],
-          "affiliation": "intelligent_info",
           "teachers": [
             "吉田晃基"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_NEW_1785559695227",
           "room_number": "545",
-          "room_name": "I5実験室",
+          "room_name": "研究室35",
           "display_number": "545",
-          "display_label": "I5実験室",
-          "category": "lab",
+          "display_label": "研究室35",
+          "category": "research",
           "center_point_mm": [
             33302.5,
             25615
@@ -170852,18 +171024,18 @@ export const B3_FLOORS_DATA = {
               27071
             ]
           ],
-          "affiliation": "intelligent_info",
           "teachers": [
             "和田健"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_NEW_1785559704437",
-          "room_number": "544",
-          "room_name": "I4実験室",
-          "display_number": "544",
-          "display_label": "I4実験室",
-          "category": "lab",
+          "room_number": "550",
+          "room_name": "倉庫4",
+          "display_number": "550",
+          "display_label": "倉庫4",
+          "category": "research",
           "center_point_mm": [
             33277.5,
             28502
@@ -170892,18 +171064,18 @@ export const B3_FLOORS_DATA = {
               30032
             ]
           ],
-          "affiliation": "intelligent_info",
           "teachers": [
             "青木一弘"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_NEW_1785559716255",
           "room_number": "543",
-          "room_name": "I3実験室",
+          "room_name": "研究室33",
           "display_number": "543",
-          "display_label": "I3実験室",
-          "category": "lab",
+          "display_label": "研究室33",
+          "category": "research",
           "center_point_mm": [
             33327,
             31513
@@ -170932,18 +171104,18 @@ export const B3_FLOORS_DATA = {
               32895
             ]
           ],
-          "affiliation": "intelligent_info",
           "teachers": [
             "木村裕太"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_NEW_1785559724297",
           "room_number": "542",
-          "room_name": "I2実験室",
+          "room_name": "研究室32",
           "display_number": "542",
-          "display_label": "I2実験室",
-          "category": "lab",
+          "display_label": "研究室32",
+          "category": "research",
           "center_point_mm": [
             33302.5,
             34426
@@ -170972,18 +171144,18 @@ export const B3_FLOORS_DATA = {
               35956
             ]
           ],
-          "affiliation": "intelligent_info",
           "teachers": [
             "新妻弘崇"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_NEW_1785559732408",
           "room_number": "541",
-          "room_name": "I1実験室",
+          "room_name": "研究室31",
           "display_number": "541",
-          "display_label": "I1実験室",
-          "category": "lab",
+          "display_label": "研究室31",
+          "category": "research",
           "center_point_mm": [
             33278,
             37486
@@ -171012,18 +171184,18 @@ export const B3_FLOORS_DATA = {
               38967
             ]
           ],
-          "affiliation": "intelligent_info",
           "teachers": [
             "土井智晴"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "5F_NEW_1785559738771",
           "room_number": "540",
-          "room_name": "E6実験室",
+          "room_name": "研究室30",
           "display_number": "540",
-          "display_label": "E6実験室",
-          "category": "lab",
+          "display_label": "研究室30",
+          "category": "research",
           "center_point_mm": [
             33278,
             40472
@@ -171052,18 +171224,18 @@ export const B3_FLOORS_DATA = {
               41928
             ]
           ],
-          "affiliation": "electronics",
           "teachers": [
             "重井宜行"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "5F_NEW_1785559767879",
           "room_number": "539",
-          "room_name": "E5実験室",
+          "room_name": "研究室29",
           "display_number": "539",
-          "display_label": "E5実験室",
-          "category": "lab",
+          "display_label": "研究室29",
+          "category": "research",
           "center_point_mm": [
             33326.5,
             43507.5
@@ -171092,10 +171264,10 @@ export const B3_FLOORS_DATA = {
               44939
             ]
           ],
-          "affiliation": "electronics",
           "teachers": [
             "梅本敏孝"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "5F_NEW_1785560354887",
@@ -171131,7 +171303,9 @@ export const B3_FLOORS_DATA = {
               28508,
               54180
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785560366208",
@@ -171182,30 +171356,30 @@ export const B3_FLOORS_DATA = {
           "category": "research",
           "center_point_mm": [
             4137.5,
-            1821
+            1550
           ],
           "bounding_box_mm": {
             "x": -117,
-            "y": 271,
+            "y": 0,
             "width": 8509,
             "height": 3100
           },
           "polygon_mm": [
             [
               -117,
-              271
+              0
             ],
             [
               8392,
-              271
+              0
             ],
             [
               8392,
-              3371
+              3100
             ],
             [
               -117,
-              3371
+              3100
             ]
           ],
           "teachers": [
@@ -171287,7 +171461,9 @@ export const B3_FLOORS_DATA = {
               19391,
               44745
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785570635030",
@@ -171323,7 +171499,9 @@ export const B3_FLOORS_DATA = {
               34853,
               53874
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785570663822",
@@ -171359,7 +171537,9 @@ export const B3_FLOORS_DATA = {
               31968,
               53933
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785570723378",
@@ -171395,7 +171575,9 @@ export const B3_FLOORS_DATA = {
               10708,
               6445
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785570755254",
@@ -171431,7 +171613,9 @@ export const B3_FLOORS_DATA = {
               13579,
               6445
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785570818678",
@@ -171467,7 +171651,9 @@ export const B3_FLOORS_DATA = {
               31728,
               6570
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785570842416",
@@ -171503,7 +171689,9 @@ export const B3_FLOORS_DATA = {
               11073,
               53749
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785570863069",
@@ -171539,7 +171727,9 @@ export const B3_FLOORS_DATA = {
               17188,
               53936
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "5F_NEW_1785570883289",
@@ -171575,83 +171765,9 @@ export const B3_FLOORS_DATA = {
               28856,
               2951
             ]
-          ]
-        },
-        {
-          "room_id": "5F_NEW_1785755211243",
-          "room_number": "",
-          "room_name": "",
-          "display_number": "",
-          "display_label": "",
-          "category": "classroom",
-          "affiliation": "other",
-          "teachers": [],
-          "center_point_mm": [
-            22876,
-            4528
           ],
-          "bounding_box_mm": {
-            "x": 17077,
-            "y": 2919,
-            "width": 11598,
-            "height": 3218
-          },
-          "polygon_mm": [
-            [
-              17077,
-              2919
-            ],
-            [
-              28675,
-              2919
-            ],
-            [
-              28675,
-              6137
-            ],
-            [
-              17077,
-              6137
-            ]
-          ]
-        },
-        {
-          "room_id": "5F_NEW_1785755251019",
-          "room_number": "",
-          "room_name": "",
-          "display_number": "",
-          "display_label": "",
-          "category": "classroom",
-          "affiliation": "other",
           "teachers": [],
-          "center_point_mm": [
-            24033,
-            49076.5
-          ],
-          "bounding_box_mm": {
-            "x": 19625,
-            "y": 47434,
-            "width": 8816,
-            "height": 3285
-          },
-          "polygon_mm": [
-            [
-              19625,
-              47434
-            ],
-            [
-              28441,
-              47434
-            ],
-            [
-              28441,
-              50719
-            ],
-            [
-              19625,
-              50719
-            ]
-          ]
+          "affiliation": "other"
         }
       ]
     },
@@ -210682,6 +210798,54 @@ export const B3_FLOORS_DATA = {
         },
         {
           "x": 40891.3,
+          "y": 20998.4,
+          "w": 0,
+          "h": 150.4
+        },
+        {
+          "x": 41894.5,
+          "y": 20998.4,
+          "w": 0,
+          "h": 150.4
+        },
+        {
+          "x": 42897.6,
+          "y": 20998.4,
+          "w": 0,
+          "h": 150.4
+        },
+        {
+          "x": 43900.7,
+          "y": 20998.4,
+          "w": 0,
+          "h": 150.4
+        },
+        {
+          "x": 44891.2,
+          "y": 20998.4,
+          "w": 0,
+          "h": 150.4
+        },
+        {
+          "x": 45894.3,
+          "y": 20998.4,
+          "w": 0,
+          "h": 150.4
+        },
+        {
+          "x": 46897.4,
+          "y": 20998.4,
+          "w": 0,
+          "h": 150.4
+        },
+        {
+          "x": 47900.6,
+          "y": 20998.4,
+          "w": 0,
+          "h": 150.4
+        },
+        {
+          "x": 40891.3,
           "y": 23956.4,
           "w": 0,
           "h": 150.4
@@ -210937,6 +211101,12 @@ export const B3_FLOORS_DATA = {
           "y": 18441.5,
           "w": 596.8,
           "h": 438.7
+        },
+        {
+          "x": 40294.5,
+          "y": 18416.4,
+          "w": 50.8,
+          "h": 50.1
         },
         {
           "x": 39977.1,
@@ -214740,44 +214910,46 @@ export const B3_FLOORS_DATA = {
       "rooms": [
         {
           "room_id": "6F_613_W",
-          "room_number": "612",
-          "room_name": "プロダクトデザイン 5年 HR",
+          "room_number": "613",
+          "room_name": "5年HR（プロダクトデザイン）",
           "category": "classroom",
           "center_point_mm": [
-            4251.6,
-            6277.4
+            4251.5,
+            6172.5
           ],
           "bounding_box_mm": {
-            "x": 4.2,
-            "y": 355.1,
-            "width": 8494.9,
-            "height": 11844.5
+            "x": 4,
+            "y": 0,
+            "width": 8495,
+            "height": 12345
           },
           "polygon_mm": [
             [
-              4.2,
-              355.1
+              4,
+              0
             ],
             [
-              8499.1,
-              355.1
+              8499,
+              0
             ],
             [
-              8499.1,
-              12199.6
+              8499,
+              12345
             ],
             [
-              4.2,
-              12199.6
+              4,
+              12345
             ]
           ],
-          "affiliation": "product_design",
-          "display_number": "612"
+          "display_number": "613",
+          "display_label": "5年HR（プロダクトデザイン）",
+          "teachers": [],
+          "affiliation": "product_design"
         },
         {
           "room_id": "6F_6W43_W",
-          "room_number": "615",
-          "room_name": "研究室63",
+          "room_number": "616",
+          "room_name": "研究室64",
           "category": "research",
           "center_point_mm": [
             4251.5,
@@ -214807,8 +214979,8 @@ export const B3_FLOORS_DATA = {
               32918
             ]
           ],
-          "display_number": "615",
-          "display_label": "研究室63",
+          "display_number": "616",
+          "display_label": "研究室64",
           "teachers": [
             "中津壮人"
           ],
@@ -214816,18 +214988,18 @@ export const B3_FLOORS_DATA = {
         },
         {
           "room_id": "6F_6W47_W",
-          "room_number": "616",
+          "room_number": "617",
           "room_name": "M5実験室",
           "category": "lab",
           "center_point_mm": [
             4251.5,
-            37218
+            37468
           ],
           "bounding_box_mm": {
             "x": 4,
             "y": 32918,
             "width": 8495,
-            "height": 8600
+            "height": 9100
           },
           "polygon_mm": [
             [
@@ -214840,34 +215012,34 @@ export const B3_FLOORS_DATA = {
             ],
             [
               8499,
-              41518
+              42018
             ],
             [
               4,
-              41518
+              42018
             ]
           ],
-          "display_number": "616",
+          "display_number": "617",
           "display_label": "M5実験室",
-          "affiliation": "energy_machine",
           "teachers": [
             "中津壮人/君家直之/(空き)"
-          ]
+          ],
+          "affiliation": "energy_machine"
         },
         {
           "room_id": "6F_6W57_W",
-          "room_number": "617",
-          "room_name": "エネルギー機械 5年 HR",
+          "room_number": "618",
+          "room_name": "5年HR（エネルギー機械）",
           "category": "classroom",
           "center_point_mm": [
             4251.5,
-            47721
+            47971
           ],
           "bounding_box_mm": {
             "x": 4,
             "y": 41805,
             "width": 8495,
-            "height": 11832
+            "height": 12332
           },
           "polygon_mm": [
             [
@@ -214880,57 +215052,60 @@ export const B3_FLOORS_DATA = {
             ],
             [
               8499,
-              53637
+              54137
             ],
             [
               4,
-              53637
+              54137
             ]
           ],
-          "display_number": "617",
-          "display_label": "エネルギー機械 5年 HR",
+          "display_number": "618",
+          "display_label": "5年HR（エネルギー機械）",
+          "teachers": [],
           "affiliation": "energy_machine"
         },
         {
           "room_id": "6F_611_E",
-          "room_number": "610",
-          "display_number": "610",
-          "room_name": "知的情報 5年 HR",
+          "room_number": "611",
+          "room_name": "5年HR（知能情報）",
           "category": "classroom",
           "center_point_mm": [
-            44148.3,
-            6277.4
+            44148.5,
+            6172.5
           ],
           "bounding_box_mm": {
-            "x": 39900.9,
-            "y": 355.1,
-            "width": 8494.9,
-            "height": 11844.5
+            "x": 39901,
+            "y": 0,
+            "width": 8495,
+            "height": 12345
           },
           "polygon_mm": [
             [
-              39900.9,
-              355.1
+              39901,
+              0
             ],
             [
-              48395.8,
-              355.1
+              48396,
+              0
             ],
             [
-              48395.8,
-              12199.6
+              48396,
+              12345
             ],
             [
-              39900.9,
-              12199.6
+              39901,
+              12345
             ]
           ],
           "svg_fill": "#c3fdfd",
+          "display_number": "611",
+          "display_label": "5年HR（知能情報）",
+          "teachers": [],
           "affiliation": "intelligent_info"
         },
         {
           "room_id": "6F_609_E",
-          "room_number": "609",
+          "room_number": "610",
           "room_name": "I10実験室",
           "category": "research",
           "center_point_mm": [
@@ -214962,17 +215137,17 @@ export const B3_FLOORS_DATA = {
             ]
           ],
           "svg_fill": "#c3fdfd",
-          "display_number": "609",
+          "display_number": "610",
           "display_label": "I10実験室",
-          "affiliation": "intelligent_info",
           "teachers": [
             "(空き)"
-          ]
+          ],
+          "affiliation": "intelligent_info"
         },
         {
           "room_id": "6F_607_E",
-          "room_number": "608",
-          "room_name": "研究室62",
+          "room_number": "609",
+          "room_name": "研究室63",
           "category": "research",
           "center_point_mm": [
             44148.3,
@@ -215002,12 +215177,87 @@ export const B3_FLOORS_DATA = {
               18115.6
             ]
           ],
-          "display_number": "608",
-          "display_label": "研究室62",
+          "display_number": "609",
+          "display_label": "研究室63",
           "teachers": [
             "(空き)"
           ],
           "affiliation": "intelligent_info"
+        },
+        {
+          "room_id": "6F_605_E",
+          "room_number": "608",
+          "room_name": "研究室62",
+          "category": "research",
+          "center_point_mm": [
+            44148.3,
+            19594.6
+          ],
+          "bounding_box_mm": {
+            "x": 39900.9,
+            "y": 18115.6,
+            "width": 8494.9,
+            "height": 2958
+          },
+          "polygon_mm": [
+            [
+              39900.9,
+              18115.6
+            ],
+            [
+              48395.8,
+              18115.6
+            ],
+            [
+              48395.8,
+              21073.6
+            ],
+            [
+              39900.9,
+              21073.6
+            ]
+          ],
+          "display_number": "608",
+          "display_label": "研究室62",
+          "teachers": []
+        },
+        {
+          "room_id": "6F_603_E",
+          "room_number": "607",
+          "room_name": "i9実験室",
+          "category": "research",
+          "center_point_mm": [
+            44148.3,
+            22552.6
+          ],
+          "bounding_box_mm": {
+            "x": 39900.9,
+            "y": 21073.6,
+            "width": 8494.9,
+            "height": 2958
+          },
+          "polygon_mm": [
+            [
+              39900.9,
+              21073.6
+            ],
+            [
+              48395.8,
+              21073.6
+            ],
+            [
+              48395.8,
+              24031.6
+            ],
+            [
+              39900.9,
+              24031.6
+            ]
+          ],
+          "svg_fill": "#c3fdfd",
+          "display_number": "607",
+          "display_label": "i9実験室",
+          "teachers": []
         },
         {
           "room_id": "6F_601_E",
@@ -215084,10 +215334,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "604",
           "display_label": "研究室60",
-          "affiliation": "electronics",
           "teachers": [
             "川上太知"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "6F_6E19_E",
@@ -215124,10 +215374,10 @@ export const B3_FLOORS_DATA = {
           ],
           "display_number": "603",
           "display_label": "研究室59",
-          "affiliation": "electronics",
           "teachers": [
             "榎倉浩志"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "6F_6E21_E",
@@ -215165,10 +215415,10 @@ export const B3_FLOORS_DATA = {
           "svg_fill": "#87c397",
           "display_number": "602",
           "display_label": "E8実験室",
-          "affiliation": "electronics",
           "teachers": [
             "榎倉浩志"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "6F_6E23_E",
@@ -215176,43 +215426,44 @@ export const B3_FLOORS_DATA = {
           "room_name": "エレクトロニクス 5年 HR",
           "category": "classroom",
           "center_point_mm": [
-            44148.3,
-            47720.6
+            44148.5,
+            47971
           ],
           "bounding_box_mm": {
-            "x": 39900.9,
-            "y": 41804.6,
-            "width": 8494.9,
-            "height": 11832
+            "x": 39901,
+            "y": 41805,
+            "width": 8495,
+            "height": 12332
           },
           "polygon_mm": [
             [
-              39900.9,
-              41804.6
+              39901,
+              41805
             ],
             [
-              48395.8,
-              41804.6
+              48396,
+              41805
             ],
             [
-              48395.8,
-              53636.6
+              48396,
+              54137
             ],
             [
-              39900.9,
-              53636.6
+              39901,
+              54137
             ]
           ],
           "display_number": "601",
           "display_label": "エレクトロニクス 5年 HR",
+          "teachers": [],
           "affiliation": "electronics"
         },
         {
           "room_id": "6F_NEW_1785559917140",
-          "room_number": "613",
-          "room_name": "D２実験室",
-          "display_number": "613",
-          "display_label": "D２実験室",
+          "room_number": "614",
+          "room_name": "D2実験室",
+          "display_number": "614",
+          "display_label": "D2実験室",
           "category": "lab",
           "center_point_mm": [
             4251.5,
@@ -215242,16 +215493,16 @@ export const B3_FLOORS_DATA = {
               20933
             ]
           ],
-          "affiliation": "product_design",
           "teachers": [
             "難波邦彦/藪厚生/鯵坂誠之"
-          ]
+          ],
+          "affiliation": "product_design"
         },
         {
           "room_id": "6F_NEW_1785559923718",
-          "room_number": "614",
+          "room_number": "615",
           "room_name": "D3実験室",
-          "display_number": "614",
+          "display_number": "615",
           "display_label": "D3実験室",
           "category": "lab",
           "center_point_mm": [
@@ -215282,17 +215533,17 @@ export const B3_FLOORS_DATA = {
               29806
             ]
           ],
-          "affiliation": "product_design",
           "teachers": [
             "古田和久/里中直樹/中谷敬子"
-          ]
+          ],
+          "affiliation": "product_design"
         },
         {
           "room_id": "6F_MERGED_1785559966580",
-          "room_number": "623",
-          "room_name": "D実験室(高学年)",
-          "display_number": "623",
-          "display_label": "D実験室(高学年)",
+          "room_number": "624",
+          "room_name": "D実験室（高学年）",
+          "display_number": "624",
+          "display_label": "D実験室（高学年）",
           "category": "lab",
           "center_point_mm": [
             14854.400000000001,
@@ -215322,14 +215573,15 @@ export const B3_FLOORS_DATA = {
               21073.6
             ]
           ],
+          "teachers": [],
           "affiliation": "product_design"
         },
         {
           "room_id": "6F_MERGED_1785560022429",
-          "room_number": "624",
-          "room_name": "選択教室2(書道)",
-          "display_number": "624",
-          "display_label": "選択教室2(書道)",
+          "room_number": "625",
+          "room_name": "選択教室2（書道）",
+          "display_number": "625",
+          "display_label": "選択教室2（書道）",
           "category": "lab",
           "center_point_mm": [
             14854.400000000001,
@@ -215358,14 +215610,16 @@ export const B3_FLOORS_DATA = {
               10505.4,
               32918.1
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_MERGED_1785560050688",
-          "room_number": "625",
-          "room_name": "M実験室(高学年)",
-          "display_number": "625",
-          "display_label": "M実験室(高学年)",
+          "room_number": "626",
+          "room_name": "M実験室（高学年）",
+          "display_number": "626",
+          "display_label": "M実験室（高学年）",
           "category": "lab",
           "center_point_mm": [
             14854.400000000001,
@@ -215395,6 +215649,7 @@ export const B3_FLOORS_DATA = {
               44775.1
             ]
           ],
+          "teachers": [],
           "affiliation": "energy_machine"
         },
         {
@@ -215432,17 +215687,17 @@ export const B3_FLOORS_DATA = {
               32918.1
             ]
           ],
-          "affiliation": "electronics",
           "teachers": [
             "金田忠裕/安藤太一"
-          ]
+          ],
+          "affiliation": "electronics"
         },
         {
           "room_id": "6F_NEW_1785560150959",
-          "room_number": "622",
-          "room_name": "I実験室(高学年)",
-          "display_number": "622",
-          "display_label": "I実験室(高学年)",
+          "room_number": "623",
+          "room_name": "I実験室（高学年）",
+          "display_number": "623",
+          "display_label": "I実験室（高学年）",
           "category": "classroom",
           "center_point_mm": [
             33371,
@@ -215472,14 +215727,15 @@ export const B3_FLOORS_DATA = {
               21242
             ]
           ],
+          "teachers": [],
           "affiliation": "intelligent_info"
         },
         {
           "room_id": "6F_NEW_1785560159905",
-          "room_number": "621",
-          "room_name": "選択教室1(美術)",
-          "display_number": "621",
-          "display_label": "選択教室1(美術)",
+          "room_number": "622",
+          "room_name": "選択教室1（美術）",
+          "display_number": "622",
+          "display_label": "選択教室1（美術）",
           "category": "classroom",
           "center_point_mm": [
             33311,
@@ -215508,14 +215764,16 @@ export const B3_FLOORS_DATA = {
               28935,
               33033
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785560167002",
-          "room_number": "620",
-          "room_name": "E実験室(高学年)",
-          "display_number": "620",
-          "display_label": "E実験室(高学年)",
+          "room_number": "621",
+          "room_name": "E実験室（高学年）",
+          "display_number": "621",
+          "display_label": "E実験室（高学年）",
           "category": "classroom",
           "center_point_mm": [
             33310.5,
@@ -215545,14 +215803,15 @@ export const B3_FLOORS_DATA = {
               45188
             ]
           ],
+          "teachers": [],
           "affiliation": "electronics"
         },
         {
           "room_id": "6F_NEW_1785560181956",
           "room_number": "619",
-          "room_name": "多目的室(会議室)",
+          "room_name": "多目的室（会議室）",
           "display_number": "619",
-          "display_label": "多目的室(会議室)",
+          "display_label": "多目的室（会議室）",
           "category": "office",
           "center_point_mm": [
             24194.5,
@@ -215581,13 +215840,15 @@ export const B3_FLOORS_DATA = {
               19454,
               53758
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785560194966",
-          "room_number": "618",
+          "room_number": "620",
           "room_name": "倉庫3",
-          "display_number": "618",
+          "display_number": "620",
           "display_label": "倉庫3",
           "category": "classroom",
           "center_point_mm": [
@@ -215617,13 +215878,15 @@ export const B3_FLOORS_DATA = {
               29117,
               53758
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785567514427",
-          "room_number": "611",
+          "room_number": "612",
           "room_name": "教職員FDスペース",
-          "display_number": "611",
+          "display_number": "612",
           "display_label": "教職員FDスペース",
           "category": "office",
           "center_point_mm": [
@@ -215653,7 +215916,9 @@ export const B3_FLOORS_DATA = {
               16706,
               6813
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785569951688",
@@ -215689,7 +215954,9 @@ export const B3_FLOORS_DATA = {
               19391,
               44984
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785570230110",
@@ -215725,7 +215992,9 @@ export const B3_FLOORS_DATA = {
               34550,
               53758
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785570254649",
@@ -215761,7 +216030,9 @@ export const B3_FLOORS_DATA = {
               31867,
               53758
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785570300129",
@@ -215797,7 +216068,9 @@ export const B3_FLOORS_DATA = {
               10442,
               6813
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785570340087",
@@ -215833,7 +216106,9 @@ export const B3_FLOORS_DATA = {
               14148,
               6813
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785570509922",
@@ -215869,7 +216144,9 @@ export const B3_FLOORS_DATA = {
               31528,
               6777
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785570540134",
@@ -215880,32 +216157,34 @@ export const B3_FLOORS_DATA = {
           "category": "classroom",
           "center_point_mm": [
             13908.5,
-            50871
+            50371
           ],
           "bounding_box_mm": {
             "x": 11255,
-            "y": 47681,
+            "y": 47181,
             "width": 5307,
             "height": 6380
           },
           "polygon_mm": [
             [
               11255,
-              47681
+              47181
             ],
             [
               16562,
-              47681
+              47181
             ],
             [
               16562,
-              54061
+              53561
             ],
             [
               11255,
-              54061
+              53561
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785570561419",
@@ -215941,7 +216220,9 @@ export const B3_FLOORS_DATA = {
               29381,
               3774
             ]
-          ]
+          ],
+          "teachers": [],
+          "affiliation": "other"
         },
         {
           "room_id": "6F_NEW_1785570584223",
@@ -215952,70 +216233,34 @@ export const B3_FLOORS_DATA = {
           "category": "classroom",
           "center_point_mm": [
             17992.5,
-            52540.5
+            52040.5
           ],
           "bounding_box_mm": {
             "x": 16621,
-            "y": 51020,
+            "y": 50520,
             "width": 2743,
             "height": 3041
           },
           "polygon_mm": [
             [
               16621,
-              51020
+              50520
             ],
             [
               19364,
-              51020
+              50520
             ],
             [
               19364,
-              54061
+              53561
             ],
             [
               16621,
-              54061
+              53561
             ]
-          ]
-        },
-        {
-          "room_id": "6F_MERGED_1785735822493",
-          "room_number": "607",
-          "room_name": "演習室6",
-          "display_number": "607",
-          "display_label": "演習室6",
-          "category": "classroom",
-          "affiliation": "other",
-          "teachers": [],
-          "center_point_mm": [
-            44148.350000000006,
-            21073.6
           ],
-          "bounding_box_mm": {
-            "x": 39900.9,
-            "y": 18115.6,
-            "width": 8494.900000000001,
-            "height": 5916
-          },
-          "polygon_mm": [
-            [
-              39900.9,
-              18115.6
-            ],
-            [
-              48395.8,
-              18115.6
-            ],
-            [
-              48395.8,
-              24031.6
-            ],
-            [
-              39900.9,
-              24031.6
-            ]
-          ]
+          "teachers": [],
+          "affiliation": "other"
         }
       ]
     }
