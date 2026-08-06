@@ -1108,30 +1108,27 @@
                 preserveAspectRatio="xMidYMid meet"
                 opacity="0.75" />
 
-              <!-- キャンパス主要ランドマーク（高専B3棟＆最寄り駅）アイコンバッジ -->
+              <!-- キャンパス主要ランドマーク（高専B3棟＆最寄り駅アイコン） -->
               <g id="campus-landmarks-layer">
-                <!-- 高専 (B3棟) -->
-                <g class="campus-landmark-badge landmark-b3" transform="translate(2210, 930)">
-                  <rect x="-210" y="-60" width="420" height="100" rx="50" fill="rgba(225, 29, 72, 0.95)" stroke="#ffffff" stroke-width="10" filter="drop-shadow(0 6px 14px rgba(0,0,0,0.6))"/>
-                  <text x="0" y="8" text-anchor="middle" fill="#ffffff" font-size="52" font-weight="bold" font-family="sans-serif">🏫 B3棟 (高専)</text>
+                <!-- 高専 (B3棟: 黄色い四角の位置 x:1610, y:2130 に正確配置) -->
+                <g class="campus-landmark-badge landmark-b3" transform="translate(1610, 2130)">
+                  <!-- 針ポール -->
+                  <line x1="0" y1="0" x2="0" y2="-90" stroke="#ffffff" stroke-width="12" stroke-linecap="round" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.5))"/>
+                  <!-- バッジ -->
+                  <rect x="-210" y="-180" width="420" height="95" rx="47" fill="rgba(225, 29, 72, 0.95)" stroke="#ffffff" stroke-width="8" filter="drop-shadow(0 6px 14px rgba(0,0,0,0.6))"/>
+                  <text x="0" y="-115" text-anchor="middle" fill="#ffffff" font-size="48" font-weight="bold" font-family="sans-serif">🏫 B3棟 (高専)</text>
                 </g>
 
-                <!-- なかもず駅 (地下鉄御堂筋線) -->
-                <g class="campus-landmark-badge landmark-station" transform="translate(1080, 110)">
-                  <rect x="-200" y="-55" width="400" height="90" rx="45" fill="rgba(37, 99, 235, 0.95)" stroke="#ffffff" stroke-width="9" filter="drop-shadow(0 6px 14px rgba(0,0,0,0.6))"/>
-                  <text x="0" y="8" text-anchor="middle" fill="#ffffff" font-size="48" font-weight="bold" font-family="sans-serif">🚉 なかもず駅</text>
+                <!-- なかもず駅 (元の「なかもず」丸マーク位置にコンパクトな駅アイコンのみ) -->
+                <g class="campus-landmark-badge landmark-station" transform="translate(2040, 350)">
+                  <circle cx="0" cy="0" r="42" fill="rgba(37, 99, 235, 0.95)" stroke="#ffffff" stroke-width="6" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.5))"/>
+                  <text x="0" y="14" text-anchor="middle" fill="#ffffff" font-size="44" font-family="sans-serif">🚉</text>
                 </g>
 
-                <!-- 中百舌鳥駅 (南海高野線/泉北高速) -->
-                <g class="campus-landmark-badge landmark-station" transform="translate(1440, 140)">
-                  <rect x="-200" y="-55" width="400" height="90" rx="45" fill="rgba(37, 99, 235, 0.95)" stroke="#ffffff" stroke-width="9" filter="drop-shadow(0 6px 14px rgba(0,0,0,0.6))"/>
-                  <text x="0" y="8" text-anchor="middle" fill="#ffffff" font-size="48" font-weight="bold" font-family="sans-serif">🚉 中百舌鳥駅</text>
-                </g>
-
-                <!-- 白鷺駅 (南海高野線) -->
-                <g class="campus-landmark-badge landmark-station" transform="translate(2840, 120)">
-                  <rect x="-180" y="-55" width="360" height="90" rx="45" fill="rgba(37, 99, 235, 0.95)" stroke="#ffffff" stroke-width="9" filter="drop-shadow(0 6px 14px rgba(0,0,0,0.6))"/>
-                  <text x="0" y="8" text-anchor="middle" fill="#ffffff" font-size="48" font-weight="bold" font-family="sans-serif">🚉 白鷺駅</text>
+                <!-- 白鷺駅 (元の「白鷺」丸マーク位置にコンパクトな駅アイコンのみ) -->
+                <g class="campus-landmark-badge landmark-station" transform="translate(3120, 1300)">
+                  <circle cx="0" cy="0" r="42" fill="rgba(37, 99, 235, 0.95)" stroke="#ffffff" stroke-width="6" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.5))"/>
+                  <text x="0" y="14" text-anchor="middle" fill="#ffffff" font-size="44" font-family="sans-serif">🚉</text>
                 </g>
               </g>
             </g>
