@@ -493,6 +493,7 @@ class FloorplanApp {
     this.defaultBrandIconText = this.brandIcon ? this.brandIcon.textContent : '';
     this.defaultBrandHeadingText = this.brandHeading ? this.brandHeading.textContent : '';
     this.defaultBrandSubtitleText = this.brandSubtitle ? this.brandSubtitle.textContent : '';
+    this.landmarkB3 = document.getElementById('landmark-b3');
   }
 
   bindEvents() {
@@ -522,6 +523,30 @@ class FloorplanApp {
     if (this.btnCampusMap) {
       this.btnCampusMap.addEventListener('click', () => {
         this.toggleCampusMode();
+      });
+    }
+
+    // キャンパス付近地図内のB3棟ランドマーク（バッジ/領域）をクリック・タップした際に平面図モードへ移行する
+    if (!this.landmarkB3) {
+      this.landmarkB3 = document.getElementById('landmark-b3') || document.querySelector('.landmark-b3');
+    }
+    if (this.landmarkB3) {
+      let startX = 0;
+      let startY = 0;
+
+      this.landmarkB3.addEventListener('pointerdown', (e) => {
+        startX = e.clientX;
+        startY = e.clientY;
+      });
+
+      this.landmarkB3.addEventListener('click', (e) => {
+        if (this.suppressNextRoomClick) return;
+        const dist = Math.hypot(e.clientX - startX, e.clientY - startY);
+        // ドラッグ（パン）操作の移動量が10px未満（クリック/タップ）の場合のみ平面図表示に移行
+        if (dist < 10) {
+          e.stopPropagation();
+          this.setCampusMode(false, true);
+        }
       });
     }
 
