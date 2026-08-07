@@ -210806,54 +210806,6 @@
         },
         {
           "x": 40891.3,
-          "y": 20998.4,
-          "w": 0,
-          "h": 150.4
-        },
-        {
-          "x": 41894.5,
-          "y": 20998.4,
-          "w": 0,
-          "h": 150.4
-        },
-        {
-          "x": 42897.6,
-          "y": 20998.4,
-          "w": 0,
-          "h": 150.4
-        },
-        {
-          "x": 43900.7,
-          "y": 20998.4,
-          "w": 0,
-          "h": 150.4
-        },
-        {
-          "x": 44891.2,
-          "y": 20998.4,
-          "w": 0,
-          "h": 150.4
-        },
-        {
-          "x": 45894.3,
-          "y": 20998.4,
-          "w": 0,
-          "h": 150.4
-        },
-        {
-          "x": 46897.4,
-          "y": 20998.4,
-          "w": 0,
-          "h": 150.4
-        },
-        {
-          "x": 47900.6,
-          "y": 20998.4,
-          "w": 0,
-          "h": 150.4
-        },
-        {
-          "x": 40891.3,
           "y": 23956.4,
           "w": 0,
           "h": 150.4
@@ -211109,12 +211061,6 @@
           "y": 18441.5,
           "w": 596.8,
           "h": 438.7
-        },
-        {
-          "x": 40294.5,
-          "y": 18416.4,
-          "w": 50.8,
-          "h": 50.1
         },
         {
           "x": 39977.1,
@@ -214918,7 +214864,7 @@
       "rooms": [
         {
           "room_id": "6F_613_W",
-          "room_number": "613",
+          "room_number": "612",
           "room_name": "5年HR（プロダクトデザイン）",
           "category": "classroom",
           "center_point_mm": [
@@ -214949,14 +214895,14 @@
               12345
             ]
           ],
-          "display_number": "613",
+          "display_number": "612",
           "display_label": "5年HR（プロダクトデザイン）",
           "teachers": [],
           "affiliation": "product_design"
         },
         {
           "room_id": "6F_6W43_W",
-          "room_number": "616",
+          "room_number": "615",
           "room_name": "研究室64",
           "category": "research",
           "center_point_mm": [
@@ -214987,7 +214933,7 @@
               32918
             ]
           ],
-          "display_number": "616",
+          "display_number": "615",
           "display_label": "研究室64",
           "teachers": [
             "中津壮人"
@@ -214996,7 +214942,7 @@
         },
         {
           "room_id": "6F_6W47_W",
-          "room_number": "617",
+          "room_number": "616",
           "room_name": "M5実験室",
           "category": "lab",
           "center_point_mm": [
@@ -215027,7 +214973,7 @@
               42018
             ]
           ],
-          "display_number": "617",
+          "display_number": "616",
           "display_label": "M5実験室",
           "teachers": [
             "中津壮人/君家直之/(空き)"
@@ -215036,7 +214982,7 @@
         },
         {
           "room_id": "6F_6W57_W",
-          "room_number": "618",
+          "room_number": "617",
           "room_name": "5年HR（エネルギー機械）",
           "category": "classroom",
           "center_point_mm": [
@@ -215067,14 +215013,14 @@
               54137
             ]
           ],
-          "display_number": "618",
+          "display_number": "617",
           "display_label": "5年HR（エネルギー機械）",
           "teachers": [],
           "affiliation": "energy_machine"
         },
         {
           "room_id": "6F_611_E",
-          "room_number": "611",
+          "room_number": "610",
           "room_name": "5年HR（知能情報）",
           "category": "classroom",
           "center_point_mm": [
@@ -215106,14 +215052,14 @@
             ]
           ],
           "svg_fill": "#c3fdfd",
-          "display_number": "611",
+          "display_number": "610",
           "display_label": "5年HR（知能情報）",
           "teachers": [],
           "affiliation": "intelligent_info"
         },
         {
           "room_id": "6F_609_E",
-          "room_number": "610",
+          "room_number": "609",
           "room_name": "I10実験室",
           "category": "research",
           "center_point_mm": [
@@ -215145,7 +215091,7 @@
             ]
           ],
           "svg_fill": "#c3fdfd",
-          "display_number": "610",
+          "display_number": "609",
           "display_label": "I10実験室",
           "teachers": [
             "(空き)"
@@ -215154,7 +215100,7 @@
         },
         {
           "room_id": "6F_607_E",
-          "room_number": "609",
+          "room_number": "608",
           "room_name": "研究室63",
           "category": "research",
           "center_point_mm": [
@@ -215185,87 +215131,12 @@
               18115.6
             ]
           ],
-          "display_number": "609",
+          "display_number": "608",
           "display_label": "研究室63",
           "teachers": [
             "(空き)"
           ],
           "affiliation": "intelligent_info"
-        },
-        {
-          "room_id": "6F_605_E",
-          "room_number": "608",
-          "room_name": "研究室62",
-          "category": "research",
-          "center_point_mm": [
-            44148.3,
-            19594.6
-          ],
-          "bounding_box_mm": {
-            "x": 39900.9,
-            "y": 18115.6,
-            "width": 8494.9,
-            "height": 2958
-          },
-          "polygon_mm": [
-            [
-              39900.9,
-              18115.6
-            ],
-            [
-              48395.8,
-              18115.6
-            ],
-            [
-              48395.8,
-              21073.6
-            ],
-            [
-              39900.9,
-              21073.6
-            ]
-          ],
-          "display_number": "608",
-          "display_label": "研究室62",
-          "teachers": []
-        },
-        {
-          "room_id": "6F_603_E",
-          "room_number": "607",
-          "room_name": "i9実験室",
-          "category": "research",
-          "center_point_mm": [
-            44148.3,
-            22552.6
-          ],
-          "bounding_box_mm": {
-            "x": 39900.9,
-            "y": 21073.6,
-            "width": 8494.9,
-            "height": 2958
-          },
-          "polygon_mm": [
-            [
-              39900.9,
-              21073.6
-            ],
-            [
-              48395.8,
-              21073.6
-            ],
-            [
-              48395.8,
-              24031.6
-            ],
-            [
-              39900.9,
-              24031.6
-            ]
-          ],
-          "svg_fill": "#c3fdfd",
-          "display_number": "607",
-          "display_label": "i9実験室",
-          "teachers": []
         },
         {
           "room_id": "6F_601_E",
@@ -215468,9 +215339,9 @@
         },
         {
           "room_id": "6F_NEW_1785559917140",
-          "room_number": "614",
+          "room_number": "613",
           "room_name": "D2実験室",
-          "display_number": "614",
+          "display_number": "613",
           "display_label": "D2実験室",
           "category": "lab",
           "center_point_mm": [
@@ -215508,9 +215379,9 @@
         },
         {
           "room_id": "6F_NEW_1785559923718",
-          "room_number": "615",
+          "room_number": "614",
           "room_name": "D3実験室",
-          "display_number": "615",
+          "display_number": "614",
           "display_label": "D3実験室",
           "category": "lab",
           "center_point_mm": [
@@ -215548,9 +215419,9 @@
         },
         {
           "room_id": "6F_MERGED_1785559966580",
-          "room_number": "624",
+          "room_number": "623",
           "room_name": "D実験室（高学年）",
-          "display_number": "624",
+          "display_number": "623",
           "display_label": "D実験室（高学年）",
           "category": "lab",
           "center_point_mm": [
@@ -215586,9 +215457,9 @@
         },
         {
           "room_id": "6F_MERGED_1785560022429",
-          "room_number": "625",
+          "room_number": "624",
           "room_name": "選択教室2（書道）",
-          "display_number": "625",
+          "display_number": "624",
           "display_label": "選択教室2（書道）",
           "category": "lab",
           "center_point_mm": [
@@ -215624,9 +215495,9 @@
         },
         {
           "room_id": "6F_MERGED_1785560050688",
-          "room_number": "626",
+          "room_number": "625",
           "room_name": "M実験室（高学年）",
-          "display_number": "626",
+          "display_number": "625",
           "display_label": "M実験室（高学年）",
           "category": "lab",
           "center_point_mm": [
@@ -215702,9 +215573,9 @@
         },
         {
           "room_id": "6F_NEW_1785560150959",
-          "room_number": "623",
+          "room_number": "622",
           "room_name": "I実験室（高学年）",
-          "display_number": "623",
+          "display_number": "622",
           "display_label": "I実験室（高学年）",
           "category": "classroom",
           "center_point_mm": [
@@ -215740,9 +215611,9 @@
         },
         {
           "room_id": "6F_NEW_1785560159905",
-          "room_number": "622",
+          "room_number": "621",
           "room_name": "選択教室1（美術）",
-          "display_number": "622",
+          "display_number": "621",
           "display_label": "選択教室1（美術）",
           "category": "classroom",
           "center_point_mm": [
@@ -215778,9 +215649,9 @@
         },
         {
           "room_id": "6F_NEW_1785560167002",
-          "room_number": "621",
+          "room_number": "620",
           "room_name": "E実験室（高学年）",
-          "display_number": "621",
+          "display_number": "620",
           "display_label": "E実験室（高学年）",
           "category": "classroom",
           "center_point_mm": [
@@ -215816,9 +215687,9 @@
         },
         {
           "room_id": "6F_NEW_1785560181956",
-          "room_number": "619",
+          "room_number": "618",
           "room_name": "多目的室（会議室）",
-          "display_number": "619",
+          "display_number": "618",
           "display_label": "多目的室（会議室）",
           "category": "office",
           "center_point_mm": [
@@ -215854,9 +215725,9 @@
         },
         {
           "room_id": "6F_NEW_1785560194966",
-          "room_number": "620",
+          "room_number": "619",
           "room_name": "倉庫3",
-          "display_number": "620",
+          "display_number": "619",
           "display_label": "倉庫3",
           "category": "classroom",
           "center_point_mm": [
@@ -215892,9 +215763,9 @@
         },
         {
           "room_id": "6F_NEW_1785567514427",
-          "room_number": "612",
+          "room_number": "611",
           "room_name": "教職員FDスペース",
-          "display_number": "612",
+          "display_number": "611",
           "display_label": "教職員FDスペース",
           "category": "office",
           "center_point_mm": [
@@ -216269,6 +216140,44 @@
           ],
           "teachers": [],
           "affiliation": "other"
+        },
+        {
+          "room_id": "6F_MERGED_1786093518285",
+          "room_number": "607",
+          "room_name": "演習室5",
+          "display_number": "607",
+          "display_label": "演習室5",
+          "category": "classroom",
+          "affiliation": "other",
+          "teachers": [],
+          "center_point_mm": [
+            44148.350000000006,
+            21073.6
+          ],
+          "bounding_box_mm": {
+            "x": 39900.9,
+            "y": 18115.6,
+            "width": 8494.900000000001,
+            "height": 5916
+          },
+          "polygon_mm": [
+            [
+              39900.9,
+              18115.6
+            ],
+            [
+              48395.8,
+              18115.6
+            ],
+            [
+              48395.8,
+              24031.6
+            ],
+            [
+              39900.9,
+              24031.6
+            ]
+          ]
         }
       ]
     }
