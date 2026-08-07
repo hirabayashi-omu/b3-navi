@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>大阪公立大学工業高等専門学校(B3棟)ナビゲータ</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏢</text></svg>">
   <meta name="description" content="B3棟の部屋・階段・トイレ・EVなどを検索できるフロアナビゲータ。管理者向けの編集モードでは、ドラッグ描画での任意サイズ部屋作成・数値での幅/高さ/位置調整、新部屋の追加、誤認部屋の削除、属性（カテゴリ）変更、部屋の結合、名前修正、およびJSON保存にも対応。">
   <link rel="stylesheet" href="src/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -321,13 +322,11 @@
       min-height: 36px;
     }
 
-    /* 🧭経路表示・🏫キャンパス地図：スマホではアイコンのみのボタンにして横幅を節約 */
-    body.ui-mobile.mode-search #btn-toggle-route .label-full,
-    body.ui-mobile.mode-search #btn-campus-map .label-full {
+    /* 🧭経路表示：スマホではアイコンのみのボタンにして横幅を節約 */
+    body.ui-mobile.mode-search #btn-toggle-route .label-full {
       display: none;
     }
-    body.ui-mobile.mode-search #btn-toggle-route .label-short,
-    body.ui-mobile.mode-search #btn-campus-map .label-short {
+    body.ui-mobile.mode-search #btn-toggle-route .label-short {
       display: inline;
       font-size: 1.15rem;
       line-height: 1;
@@ -335,11 +334,7 @@
     body.ui-mobile.mode-search #btn-toggle-route,
     body.ui-mobile.mode-search #btn-campus-map {
       padding: 6px 10px;
-      min-width: 38px;
       min-height: 36px;
-    }
-    body.ui-mobile.mode-search #btn-campus-map .label-short {
-      font-size: 1.25rem;
     }
 
     /* ヘッダーの下：サイドバー（検索）→ 平面図 の縦積みに変更。
@@ -906,6 +901,8 @@
     /* キャンパス付近地図のB3棟バッジのクリック表示とホバー演出 */
     .landmark-b3 {
       cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       transition: transform 0.2s ease, filter 0.2s ease;
     }
     .landmark-b3:hover {
@@ -918,9 +915,207 @@
     .landmark-b3:active {
       transform: scale(0.97);
     }
+    .cdp-cell.cdp-highlight {
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color 0.15s ease, transform 0.15s ease;
+    }
+    .cdp-cell.cdp-highlight:hover {
+      background: rgba(225, 29, 72, 0.25);
+    }
+    .cdp-cell.cdp-highlight:active {
+      transform: scale(0.98);
+    }
+
+    /* GPS測位中トップメニューバッジ */
+    .gps-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: #34d399;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      user-select: none;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: all 0.2s ease;
+    }
+    .gps-status-badge:hover {
+      background: rgba(16, 185, 129, 0.3);
+      border-color: #34d399;
+      transform: scale(1.03);
+    }
+    .gps-status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: gps-badge-pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes gps-badge-pulse {
+      0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 6px #10b981; }
+      50% { transform: scale(1.35); opacity: 0.45; box-shadow: 0 0 12px #34d399; }
+    }
+
+    /* ==========================================================================
+       スプラッシュ / タイトル画面（アプリ起動時のPC表示ちらつき防止）
+       ========================================================================== */
+    #app-splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999999;
+      background: #0f172a;
+      background: radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      box-sizing: border-box;
+      opacity: 1;
+      transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.45s ease;
+      color: #f8fafc;
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+      overflow: hidden;
+    }
+    #app-splash-screen.fade-out {
+      opacity: 0;
+      transform: scale(1.03);
+      pointer-events: none;
+    }
+    .splash-content {
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+    .splash-image-card {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.12);
+      background: #1e293b;
+    }
+    .splash-illustration {
+      width: 100%;
+      height: auto;
+      max-height: 240px;
+      display: block;
+      object-fit: cover;
+    }
+    .splash-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #38bdf8;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+    .splash-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .splash-org {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #94a3b8;
+      letter-spacing: 0.05em;
+    }
+    .splash-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 2px 0;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .splash-sub {
+      font-size: 0.85rem;
+      color: #38bdf8;
+      margin: 0;
+      font-weight: 500;
+    }
+    .splash-footer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .splash-loader {
+      width: 160px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .splash-progress-bar {
+      position: absolute;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      animation: splash-loading 1.2s ease-in-out infinite;
+    }
+    @keyframes splash-loading {
+      0% { left: -100%; }
+      50% { left: 0%; }
+      100% { left: 100%; }
+    }
+    .btn-splash-start {
+      width: 100%;
+      padding: 14px 24px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+      color: #ffffff;
+      border: none;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-splash-start:active {
+      transform: scale(0.97);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    }
 
     body.campus-mode .app-sidebar,
-    body.campus-mode .header-controls > *:not(#btn-campus-map):not(#btn-copy-campus-link) {
+    body.campus-mode .header-controls > *:not(#btn-campus-map):not(#btn-copy-campus-link):not(#gps-status-badge) {
       display: none !important;
     }
     body.campus-mode .main-content {
@@ -929,6 +1124,30 @@
   </style>
 </head>
 <body data-theme="dark" class="mode-search">
+  <!-- スタート/タイトル画面（アプリ起動時のPC表示ちらつきを隠すスプラッシュ画面） -->
+  <div id="app-splash-screen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-image-card">
+        <img src="assets/b3_building_illustration.png?v=20260807_exact" alt="大阪公立大高専 B3棟" class="splash-illustration">
+        <div class="splash-badge">B3 BUILDING</div>
+      </div>
+      <div class="splash-text-group">
+        <div class="splash-org">大阪公立大学工業高等専門学校</div>
+        <h1 class="splash-title">B3棟 フロアナビゲータ</h1>
+        <p class="splash-sub">全階層マップ・部屋案内・GPSナビゲーション</p>
+      </div>
+      <div class="splash-footer">
+        <div class="splash-loader" id="splash-loader">
+          <div class="splash-progress-bar"></div>
+        </div>
+        <button id="btn-splash-start" class="btn-splash-start">
+          <span>タップしてスタート</span>
+          <span class="arrow">➔</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="app-container">
     <!-- Header -->
     <header class="app-header">
@@ -943,6 +1162,12 @@
       <div class="header-controls">
         <button class="btn-secondary" id="btn-campus-map" title="キャンパス付近地図モードとB3平面図表示を切り替えます"><span class="label-full">👉 キャンパス付近地図</span><span class="label-short">👉</span></button>
         <button class="btn-secondary" id="btn-copy-campus-link" title="キャンパス付近地図を直接開くリンク（?campus=1）をコピーします">🏫</button>
+
+        <!-- GPS測位中ステータスバッジ（測位中のみトップメニューに表示） -->
+        <div id="gps-status-badge" class="gps-status-badge" style="display: none;" title="GPS現在地測位中。クリックで現在地にマップを移動します。">
+          <span class="gps-status-dot"></span>
+          <span class="gps-status-text">📡 GPS測位中</span>
+        </div>
 
         <!-- ?mobile=1 の専用URLで開いた時だけ表示される目印バッジ（PC幅で開いた場合のみ） -->
         <span id="mobile-forced-badge">📱 スマホ表示中</span>
@@ -1201,6 +1426,6 @@
     </div>
   </div>
 
-  <script type="module" src="src/js/app.js?v=20260806_pure_affine"></script>
+  <script type="module" src="src/js/app.js?v=20260807"></script>
 </body>
 </html>

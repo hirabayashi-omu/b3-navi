@@ -1,7 +1,7 @@
-import { B3_FLOORS_DATA } from '../data/b3_floors_data.js';
-import { Stacked3DRenderer } from './view_3d.js';
-import { GPSCalibration, GPSWatcher, getLatLngCenter, getMaxDistanceFromCenterMeters, isLatLngWithinDistance, latLngToLocalMeters } from './gps.js';
-import { RoutePlanner, isStairRoom } from './pathfinding.js';
+import { B3_FLOORS_DATA } from '../data/b3_floors_data.js?v=20260807';
+import { Stacked3DRenderer } from './view_3d.js?v=20260807';
+import { GPSCalibration, GPSWatcher, getLatLngCenter, getMaxDistanceFromCenterMeters, isLatLngWithinDistance, latLngToLocalMeters } from './gps.js?v=20260807';
+import { RoutePlanner, isStairRoom } from './pathfinding.js?v=20260807';
 
 const LOCAL_STORAGE_KEY = 'B3_FLOORS_DATA_PERSISTED';
 
@@ -472,6 +472,7 @@ class FloorplanApp {
     // GPS現在地表示UI
     this.layerGpsLocation = document.getElementById('layer-gps-location');
     this.btnGpsLocate = document.getElementById('btn-gps-locate');
+    this.gpsStatusBadge = document.getElementById('gps-status-badge');
 
     // 現在地→目的部屋の経路表示レイヤー
     this.layerRoutePath = document.getElementById('layer-route-path');
@@ -494,9 +495,35 @@ class FloorplanApp {
     this.defaultBrandHeadingText = this.brandHeading ? this.brandHeading.textContent : '';
     this.defaultBrandSubtitleText = this.brandSubtitle ? this.brandSubtitle.textContent : '';
     this.landmarkB3 = document.getElementById('landmark-b3');
+    this.splashScreen = document.getElementById('app-splash-screen');
+    this.btnSplashStart = document.getElementById('btn-splash-start');
+  }
+
+  dismissSplashScreen() {
+    if (!this.splashScreen || this.splashScreen.classList.contains('fade-out')) return;
+    this.splashScreen.classList.add('fade-out');
+    setTimeout(() => {
+      if (this.splashScreen) this.splashScreen.style.display = 'none';
+    }, 450);
   }
 
   bindEvents() {
+    if (this.splashScreen) {
+      if (this.btnSplashStart) {
+        this.btnSplashStart.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.dismissSplashScreen();
+        });
+      }
+      this.splashScreen.addEventListener('click', () => {
+        this.dismissSplashScreen();
+      });
+      // 1.5秒後に全コンポーネントのレイアウト初期化完了に合わせて自動フェードアウト
+      setTimeout(() => {
+        this.dismissSplashScreen();
+      }, 1500);
+    }
+
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const fNum = parseInt(btn.getAttribute('data-floor'), 10);
@@ -520,6 +547,12 @@ class FloorplanApp {
       this.toggleGpsTracking();
     });
 
+    if (this.gpsStatusBadge) {
+      this.gpsStatusBadge.addEventListener('click', () => {
+        this.toggleGpsTracking();
+      });
+    }
+
     if (this.btnCampusMap) {
       this.btnCampusMap.addEventListener('click', () => {
         this.toggleCampusMode();
@@ -533,40 +566,48 @@ class FloorplanApp {
     if (this.landmarkB3) {
       let startX = null;
       let startY = null;
+      let lastTriggerTime = 0;
 
-      const recordStart = (e) => {
-        const point = e.touches ? e.touches[0] : e;
+      const triggerSwitch = (e) => {
+        if (e) e.stopPropagation();
+        const now = Date.now();
+        if (now - lastTriggerTime < 250) return;
+        lastTriggerTime = now;
+        this.suppressNextRoomClick = false;
+        this.setCampusMode(false, true);
+      };
+
+      this.landmarkB3.addEventListener('pointerdown', (e) => {
+        e.stopPropagation();
+        startX = e.clientX;
+        startY = e.clientY;
+      });
+
+      this.landmarkB3.addEventListener('touchstart', (e) => {
+        e.stopPropagation();
+        const point = e.touches ? e.touches[0] : null;
         if (point) {
           startX = point.clientX;
           startY = point.clientY;
         }
-      };
+      }, { passive: true });
 
-      this.landmarkB3.addEventListener('pointerdown', recordStart);
-      this.landmarkB3.addEventListener('mousedown', recordStart);
-      this.landmarkB3.addEventListener('touchstart', recordStart, { passive: true });
-
-      this.landmarkB3.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (this.suppressNextRoomClick) {
-          this.suppressNextRoomClick = false;
-          return;
-        }
-
-        let isClick = true;
+      this.landmarkB3.addEventListener('pointerup', (e) => {
         if (startX !== null && startY !== null && e.clientX !== undefined && e.clientY !== undefined) {
           const dist = Math.hypot(e.clientX - startX, e.clientY - startY);
-          // ドラッグ（パン）移動量が15px以上の場合のみドラッグとみなす
-          if (dist >= 15) {
-            isClick = false;
+          if (dist < 40) {
+            triggerSwitch(e);
           }
         }
         startX = null;
         startY = null;
+      });
 
-        if (isClick) {
-          this.setCampusMode(false, true);
-        }
+      this.landmarkB3.addEventListener('click', (e) => {
+        e.stopPropagation();
+        triggerSwitch(e);
+        startX = null;
+        startY = null;
       });
     }
 
@@ -941,12 +982,18 @@ class FloorplanApp {
         const dxPx = currentX - this.singleTouchState.startClientX;
         const dyPx = currentY - this.singleTouchState.startClientY;
 
-        if (Math.abs(dxPx) > 2 || Math.abs(dyPx) > 2) {
+        const moveThreshold = this.isCampusMode ? 14 : 5;
+        if (Math.abs(dxPx) > moveThreshold || Math.abs(dyPx) > moveThreshold) {
           this.singleTouchState.moved = true;
         }
 
-        this.panX = this.singleTouchState.startPanX + dxPx / (this.singleTouchState.dragScaleX || 1);
-        this.panY = this.singleTouchState.startPanY + dyPx / (this.singleTouchState.dragScaleY || 1);
+        if (this.isCampusMode) {
+          this.campusPanX = this.singleTouchState.startPanX + dxPx / (this.singleTouchState.dragScaleX || 1);
+          this.campusPanY = this.singleTouchState.startPanY + dyPx / (this.singleTouchState.dragScaleY || 1);
+        } else {
+          this.panX = this.singleTouchState.startPanX + dxPx / (this.singleTouchState.dragScaleX || 1);
+          this.panY = this.singleTouchState.startPanY + dyPx / (this.singleTouchState.dragScaleY || 1);
+        }
         this.updateTransform();
       }
     }, { passive: false });
@@ -1108,8 +1155,8 @@ class FloorplanApp {
         : 'キャンパス付近地図モードとB3平面図表示を切り替えます';
       const labelFull = this.btnCampusMap.querySelector('.label-full');
       const labelShort = this.btnCampusMap.querySelector('.label-short');
-      if (labelFull) labelFull.textContent = enabled ? '👈 B3平面図' : '👉 キャンパス付近地図';
-      if (labelShort) labelShort.textContent = enabled ? '👈' : '👉';
+      if (labelFull) labelFull.textContent = enabled ? '🏢 高専フロア' : '📍 キャンパス付近';
+      if (labelShort) labelShort.textContent = enabled ? '🏢 高専フロア' : '📍 キャンパス付近';
     }
     // タイトルバーの中身を、キャンパス地図用／通常のB3棟ナビ用に差し替える。
     // 要素自体は常に表示したままにすることで、header-controls側の位置がズレない。
@@ -1125,6 +1172,7 @@ class FloorplanApp {
       }
     }
     this.updateGpsButtonVisibility();
+    this.updateGpsBadgeStatus();
 
     if (enabled) {
       // キャンパスモード時は、フロアタブを無効化してB3フロア表示を切り替えない。
@@ -1505,9 +1553,15 @@ class FloorplanApp {
     } else {
       // 表示領域が変わった直後の可能性があるのでサイズを合わせ直す
       this.renderer3D.resize();
-      // 前回の検索ハイライトが残らないようにクリアしておく（この後、必要なら再設定する）
       this.renderer3D.clearHighlight();
     }
+
+    if (this.renderer3D) {
+      this.renderer3D.setSingleFloorMode(null);
+      this.renderer3D.resetView();
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
     this.render3DStackedView();
     if (this.renderer3D) {
@@ -2243,6 +2297,7 @@ class FloorplanApp {
     // 状態はtitle（ツールチップ）とactiveクラスの色分けで示す。
     this.btnGpsLocate.title = '現在地の表示を停止します';
     this.gpsWatcher.start();
+    this.updateGpsBadgeStatus();
   }
 
   stopGpsTracking() {
@@ -2256,6 +2311,7 @@ class FloorplanApp {
     this.lastGpsFix = null;
     this.updateRoutePath();
     this.renderCampusDistancePanel();
+    this.updateGpsBadgeStatus();
   }
 
   /**
@@ -2306,6 +2362,30 @@ class FloorplanApp {
     this.lastGpsFix = fix;
     this.updateRoutePath();
     this.renderCampusDistancePanel();
+    this.updateGpsBadgeStatus();
+  }
+
+  /**
+   * GPS測位中ステータスバッジをトップメニューヘッダーに更新・表示制御する。
+   * 「キャンパス付近地図」モード時のみ表示し、単一フロアマップ表示時は非表示にする。
+   */
+  updateGpsBadgeStatus() {
+    if (!this.gpsStatusBadge) return;
+    const isFixing = this.isCampusMode && (this.isGpsTracking || !!this.lastGpsFix);
+    if (isFixing) {
+      this.gpsStatusBadge.style.display = 'inline-flex';
+      const textEl = this.gpsStatusBadge.querySelector('.gps-status-text');
+      if (textEl) {
+        if (this.lastGpsFix && this.lastGpsFix.accuracy != null) {
+          const acc = Math.round(this.lastGpsFix.accuracy);
+          textEl.textContent = `📡 GPS測位中 (±${acc}m)`;
+        } else {
+          textEl.textContent = '📡 GPS測位中';
+        }
+      }
+    } else {
+      this.gpsStatusBadge.style.display = 'none';
+    }
   }
 
   /**
@@ -2524,6 +2604,15 @@ class FloorplanApp {
       <div class="cdp-title">📍 現在地からの距離</div>
       <div class="cdp-grid">${cells}</div>
     `;
+
+    const b3Cell = this.campusDistancePanel.querySelector('.cdp-highlight');
+    if (b3Cell) {
+      b3Cell.setAttribute('title', 'クリックするとB3棟平面図表示に切り替えます');
+      b3Cell.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.setCampusMode(false, true);
+      });
+    }
   }
 
   // ========================================================================
@@ -2835,23 +2924,8 @@ class FloorplanApp {
     const shouldShowCard = this.selectedRoomIds.size > 0 && (this.isEditMode || this.isRoomSelectedByDirectClick);
 
     if (!shouldShowCard) {
-      if (this.isMobileViewport()) {
-        if (roomEditorSection) roomEditorSection.style.display = 'none';
-        this.roomEditorCard.innerHTML = '';
-        return;
-      }
-      if (roomEditorSection) roomEditorSection.style.display = '';
-      this.roomEditorCard.innerHTML = this.isEditMode
-        ? `
-        <div class="empty-state">
-          平面図上の部屋をクリックすると<br>部屋番号・名前・横幅/縦幅・属性の訂正ができます<br><small>(Shift+クリックで複数選択)</small>
-        </div>
-      `
-        : `
-        <div class="empty-state">
-          平面図上の部屋をクリックすると<br>部屋の詳細情報を確認できます
-        </div>
-      `;
+      if (roomEditorSection) roomEditorSection.style.display = 'none';
+      this.roomEditorCard.innerHTML = '';
       return;
     }
 

@@ -20,8 +20,8 @@ export class Stacked3DRenderer {
     // アイソメトリック投影パラメータ
     this.angleX = 45 * Math.PI / 180; // 45度
     this.angleZ = 30 * Math.PI / 180; // 30度
-    this.scale = 0.008;
-    this.floorSpacing = 160; // 階間ピクセル距離
+    this.scale = 0.005;
+    this.floorSpacingMm = 18000; // 階間距離 (mm)
 
     this.offsetX = 0;
     this.offsetY = 0;
@@ -130,11 +130,22 @@ export class Stacked3DRenderer {
   resetView() {
     this.angleX = 45 * Math.PI / 180;
     this.angleZ = 30 * Math.PI / 180;
-    this.scale = 0.008;
     this.panOffsetX = 0;
     this.panOffsetY = 0;
     this.highlightTarget = null;
     this.stopHighlightBlink();
+
+    const canvasW = this.canvas.width || 800;
+    const canvasH = this.canvas.height || 600;
+
+    const bboxWidthMm = (this.totalWidth + this.totalHeight) * Math.sin(this.angleX);
+    const numFloors = this.singleFloorNumber !== null ? 1 : (this.floorsData && this.floorsData.length > 0 ? this.floorsData.length : 6);
+    const bboxHeightMm = (this.totalWidth + this.totalHeight) * Math.cos(this.angleX) * Math.sin(this.angleZ) + ((numFloors - 1) * (this.floorSpacingMm || 18000)) * Math.cos(this.angleZ);
+
+    const fitScaleX = (canvasW * 0.85) / Math.max(1, bboxWidthMm);
+    const fitScaleY = (canvasH * 0.85) / Math.max(1, bboxHeightMm);
+    this.scale = Math.max(0.002, Math.min(0.015, Math.min(fitScaleX, fitScaleY)));
+
     this.render();
   }
 
@@ -334,9 +345,8 @@ export class Stacked3DRenderer {
       const floorNums = this.floorsData.map(f => f.floor);
       const minFloor = Math.min(...floorNums);
       const maxFloor = Math.max(...floorNums);
-      // 各フロアのzHeightは (floor-1)*floorSpacing/scale で、isoProject内で *scale されるため
-      // scaleに依存しない一定のピクセル量として計算できる
-      const zSpanPixels = (maxFloor - minFloor) * this.floorSpacing * Math.cos(this.angleZ);
+      const zSpanMm = this.singleFloorNumber !== null ? 0 : (maxFloor - minFloor) * (this.floorSpacingMm || 18000);
+      const zSpanPixels = zSpanMm * Math.cos(this.angleZ) * this.scale;
       verticalCenterAdjust = zSpanPixels / 2;
     }
     return {
@@ -547,7 +557,7 @@ export class Stacked3DRenderer {
       }
       const zHeight = this.singleFloorNumber !== null
         ? 0
-        : (floorData.floor - 1) * this.floorSpacing / this.scale;
+        : (floorData.floor - 1) * (this.floorSpacingMm || 18000);
       this.renderFloorPlate(floorData, zHeight);
     });
   }
