@@ -235,7 +235,7 @@ export class Stacked3DRenderer {
     const currentEnd = segment.points[segment.points.length - 1];
     const nextStart = nextSegment.points[0];
     const p1 = this.isoProject(currentEnd[0], currentEnd[1], zHeight + 700);
-    const nextZHeight = (nextSegment.floor - 1) * this.floorSpacing / this.scale;
+    const nextZHeight = (nextSegment.floor - 1) * (this.floorSpacingMm || 18000);
     const p2 = this.isoProject(nextStart[0], nextStart[1], nextZHeight + 700);
 
     this.ctx.save();
@@ -317,7 +317,7 @@ export class Stacked3DRenderer {
 
     const cx = roomCx;
     const cy = roomCy;
-    const zHeight = (this.highlightTarget.floor - 1) * this.floorSpacing / this.scale;
+    const zHeight = (this.highlightTarget.floor - 1) * (this.floorSpacingMm || 18000);
     const projected = this.projectWithOffsets(cx, cy, zHeight, baseOffsets.x, baseOffsets.y);
 
     this.panOffsetX = this.canvas.width / 2 - projected.x;
